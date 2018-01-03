@@ -213,10 +213,15 @@ $ cat project.txt
 {: .bash}
 
 ~~~
-Cold and dry, but everything is my favorite color
-The two moons may be a problem for Wolfman
-But the Mummy will appreciate the lack of humidity
-We removed the conflict on this line
+Some initial data analysis to identify how inflammation changes over time after surgery.
+Jane is a Data Scientist and Samit is a statistician. We'll need to determine
+who is responsible for what in this project.
+We may need to bring a third person with Python programming skills into the project.
+The third team member needs to be competent in both Python and R. They
+also need to be familiar with matplotlib and ggplot
+Add a different line to the originator's copy
+This line added to the collaborator's copy
+
 ~~~
 {: .output}
 

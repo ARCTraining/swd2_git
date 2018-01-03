@@ -172,7 +172,7 @@ To https://github.com/ARCTraining/inflammation.git
 
 Our local and remote repositories are now in this state:
 
-![GitHub Repository After First Push](../fig/github-repo-after-first-push.svg)
+![GitHub Repository After First Push](../fig/github-repo-after-first-push.png)
 
 > ## The '-u' Flag
 >

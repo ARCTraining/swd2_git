@@ -198,7 +198,7 @@ $ cat project.txt
 {: .bash}
 
 ~~~
-We could use Github, Gitlab or Bitbucket to host our code.
+Notes on what scripts we need to write.
 ~~~
 {: .output}
 
@@ -219,6 +219,7 @@ Changes not staged for commit:
 	modified:   project.txt
 
 no changes added to commit (use "git add" and/or "git commit -a")
+~~~
 {: .output}
 
 We can put things back the way they were
@@ -246,7 +247,7 @@ As you might guess from its name,
 In this case,
 we're telling Git that we want to recover the version of the file recorded in `HEAD`,
 which is the last saved commit.
-If we want to go back even further,
+If we want to go back even further, say to the first commit,
 we can use a commit identifier instead:
 
 ~~~
@@ -260,7 +261,7 @@ $ cat project.txt
 {: .bash}
 
 ~~~
-Cold and dry, but everything is my favorite color
+Some initial data analysis to identify how inflammation changes over time after surgery.
 ~~~
 {: .output}
 
@@ -315,12 +316,12 @@ the commit in which we made the change we're trying to get rid of.
 In the example below, we want to retrieve the state from before the most
 recent commit (`HEAD~1`), which is commit `f22b25e`:
 
-![Git Checkout](../fig/git-checkout.svg)
+![Git Checkout](../fig/git-checkout.png)
 
 So, to put it all together,
 here's how Git works in cartoon form:
 
-![https://figshare.com/articles/How_Git_works_a_cartoon/1328266](../fig/git_staging.svg)
+![https://figshare.com/articles/How_Git_works_a_cartoon/1328266](../fig/git_staging.png)
 
 > ## Simplifying the Common Case
 >
@@ -411,29 +412,29 @@ moving backward and forward in time becomes much easier.
 > 1.
 >
 > ~~~
-> Venus is too hot to be suitable as a base
+> We need to think about the statistical techniques to apply
 > ~~~
 > {: .output}
 >
 > 2.
 >
 > ~~~
-> Venus is beautiful and full of love
+> So that we have defensible conclusions
 > ~~~
 > {: .output}
 >
 > 3.
 >
 > ~~~
-> Venus is beautiful and full of love
-> Venus is too hot to be suitable as a base
+> We need to think about the statistical techniques to apply
+> So that we have defensible conclusions
 > ~~~
 > {: .output}
 >
 > 4.
 >
 > ~~~
-> Error because you have changed venus.txt without committing the changes
+> Error because you have changed analysis.txt without committing the changes
 > ~~~
 > {: .output}
 >
@@ -441,51 +442,51 @@ moving backward and forward in time becomes much easier.
 > >
 > > Line by line:
 > > ~~~
-> > $ cd planets
+> > $ cd inflammation
 > > ~~~
 > > {: .bash}
-> > Enters into the 'planets' directory
+> > Enters into the 'inflammation' directory
 > >
 > > ~~~
-> > $ nano venus.txt #input the following text: Venus is beautiful and full of love
+> > $ nano analysis.txt #input the following text: We need to think about the statistical techniques to apply
 > > ~~~
 > > {: .bash}
 > > We created a new file and wrote a sentence in it, but the file is not tracked by git.  
 > >
 > > ~~~
-> > $ git add venus.txt
+> > $ git add analysis.txt
 > > ~~~
 > > {: .bash}
 > > Now the file is staged. The changes that have been made to the file until now will be committed in the next commit.
 > >
 > > ~~~
-> > $ nano venus.txt #add the following text: Venus is too hot to be suitable as a base
+> > $ nano analysis.txt #add the following text: So that we have defensible conclusions
 > > ~~~
 > > {: .bash}
 > > The file has been modified. The new changes are not staged because we have not added the file.
 > >
 > > ~~~
-> > $ git commit -m "Comment on Venus as an unsuitable base"
+> > $ git commit -m "Thoughts on statistical techniques"
 > > ~~~
 > > {: .bash}
-> > The changes that were staged (Venus is beautiful and full of love) have been committed. The changes that were not staged (Venus is too hot to be suitable as a base) have not. Our local working copy is different than the copy in our local repository.
+> > The changes that were staged (We need to think about the statistical techniques to apply) have been committed. The changes that were not staged (So that we have defensible conclusions) have not. Our local working copy is different than the copy in our local repository.
 > >
 > > ~~~
-> > $ git checkout HEAD venus.txt
+> > $ git checkout HEAD analysis.txt
 > > ~~~
 > > {: .bash}
 > > With checkout we discard the changes in the working directory so that our local copy is exactly the same as our HEAD, the most recent commit.
 > >
 > > ~~~
-> > $ cat venus.txt #this will print the contents of venus.txt to the screen
+> > $ cat analysis.txt #this will print the contents of analysis.txt to the screen
 > > ~~~
 > > {: .bash}
-> > If we print venus.txt we will get answer 2.
+> > If we print analysis.txt we will get answer 1.
 > >
 > {: .solution}
 {: .challenge}
 
-> ## Checking Understanding of `git diff`
+> ## Checking Understanding of git diff
 >
 > Consider this command: `git diff HEAD~3 project.txt`. What do you predict this command
 > will do if you execute it? What happens when you do execute it? Why?
@@ -508,7 +509,7 @@ moving backward and forward in time becomes much easier.
 > Exploring history is an important part of git, often it is a challenge to find
 > the right commit ID, especially if the commit is from several months ago.
 >
-> Imagine the `planets` project has more than 50 files.
+> Imagine the `inflammation` project has more than 50 files.
 > You would like to find a commit with specific text in `project.txt` is modified.
 > When you type `git log`, a very long list appeared,
 > How can you narrow down the search?

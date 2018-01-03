@@ -6,10 +6,10 @@
 carpentry: "swc"
 
 # Overall title for pages.
-title: "Version Control with Git"
+title: "SWD2: Version Control with Git and Github"
 
 # Contact email address.
-email: lessons@software-carpentry.org
+email: m.callaghan@leeds.ac.uk
 
 #------------------------------------------------------------
 # Generic settings (should not need to change).

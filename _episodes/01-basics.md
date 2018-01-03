@@ -33,7 +33,7 @@ think of it as a tape: if you rewind the tape and start at the base
 document, then you can play back each change and end up with your
 latest version.
 
-![Changes Are Saved Sequentially](../fig/play-changes.svg)
+![Changes Are Saved Sequentially](../fig/play-changes.png)
 
 Once you think of changes as separate from the document itself, you
 can then think about "playing back" different sets of changes onto the
@@ -41,11 +41,11 @@ base document and getting different versions of the document. For
 example, two users can make independent sets of changes based on the
 same document.
 
-![Different Versions Can be Saved](../fig/versions.svg)
+![Different Versions Can be Saved](../fig/versions.png)
 
 Unless there are conflicts, you can even play two sets of changes onto the same base document.
 
-![Multiple Versions Can be Merged](../fig/merge.svg)
+![Multiple Versions Can be Merged](../fig/merge.png)
 
 A version control system is a tool that keeps track of these changes for us and
 helps us version and merge our files. It allows you to

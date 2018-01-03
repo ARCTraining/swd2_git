@@ -45,7 +45,7 @@ $ git clone https://github.com/jane/inflammation.git ~/Desktop/jane-inflammation
 
 Replace `jane` with the correct username for your collaborator.
 
-![After Creating Clone of Repository](../fig/github-collaboration.svg)
+![After Creating Clone of Repository](../fig/github-collaboration.png)
 
 The Collaborator can now make a change in her clone of the Owner's repository,
 exactly the same way as we've been doing before:
