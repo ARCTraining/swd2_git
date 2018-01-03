@@ -96,14 +96,14 @@ by acting as a shareable electronic lab notebook for computational work:
 
 > ## Making Code Citable
 >
-> Anything that is hosted in a version control repository (data, code, papers, 
+> Anything that is hosted in a version control repository (data, code, papers,
 > etc.) can be turned into a citable object. You'll learn how to do this in
 > [lesson 12: Citation]({{ page.root }}/12-citation/).
 {: .callout}
 
 > ## How Reproducible Is My Work?
 >
-> Ask one of your labmates to reproduce a result you recently obtained
+> Ask one of your colleagues to reproduce a result you recently obtained
 > using only what they can find in your papers or on the web.
 > Try to do the same for one of their results,
 > then try to do it for a result from a lab you work with.

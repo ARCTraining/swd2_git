@@ -20,47 +20,54 @@ different changes to each copy.  Version control helps us manage these
 [resolve]({{ page.root }}/reference/#resolve) overlapping changes.
 
 To see how we can resolve conflicts, we must first create one.  The file
-`mars.txt` currently looks like this in both partners' copies of our `planets`
+`project.txt` currently looks like this in both partners' copies of our `inflammation`
 repository:
 
 ~~~
-$ cat mars.txt
+$ cat project.txt
 ~~~
 {: .bash}
 
 ~~~
-Cold and dry, but everything is my favorite color
-The two moons may be a problem for Wolfman
-But the Mummy will appreciate the lack of humidity
+Some initial data analysis to identify how inflammation changes over time after surgery.
+Jane is a Data Scientist and Samit is a statistician. We'll need to determine
+who is responsible for what in this project.
+We may need to bring a third person with Python programming skills into the project.
+The third team member needs to be competent in both Python and R. They
+also need to be familiar with matplotlib and ggplot
+
 ~~~
 {: .output}
 
 Let's add a line to one partner's copy only:
 
 ~~~
-$ nano mars.txt
-$ cat mars.txt
+$ nano project.txt
+$ cat project.txt
 ~~~
 {: .bash}
 
 ~~~
-Cold and dry, but everything is my favorite color
-The two moons may be a problem for Wolfman
-But the Mummy will appreciate the lack of humidity
-This line added to Wolfman's copy
+Some initial data analysis to identify how inflammation changes over time after surgery.
+Jane is a Data Scientist and Samit is a statistician. We'll need to determine
+who is responsible for what in this project.
+We may need to bring a third person with Python programming skills into the project.
+The third team member needs to be competent in both Python and R. They
+also need to be familiar with matplotlib and ggplot
+This line added to the collaborator's copy
 ~~~
 {: .output}
 
 and then push the change to GitHub:
 
 ~~~
-$ git add mars.txt
-$ git commit -m "Add a line in our home copy"
+$ git add project.txt
+$ git commit -m "Add a line to the collaborator copy"
 ~~~
 {: .bash}
 
 ~~~
-[master 5ae9631] Add a line in our home copy
+[master f4915d6] Add a line to the collaborator copy
  1 file changed, 1 insertion(+)
 ~~~
 {: .output}
@@ -71,44 +78,48 @@ $ git push origin master
 {: .bash}
 
 ~~~
-Counting objects: 5, done.
+Counting objects: 3, done.
 Delta compression using up to 4 threads.
 Compressing objects: 100% (3/3), done.
-Writing objects: 100% (3/3), 352 bytes, done.
-Total 3 (delta 1), reused 0 (delta 0)
-To https://github.com/vlad/planets
-   29aba7c..dabb4c8  master -> master
+Writing objects: 100% (3/3), 333 bytes | 333.00 KiB/s, done.
+Total 3 (delta 2), reused 0 (delta 0)
+remote: Resolving deltas: 100% (2/2), completed with 2 local objects.
+To https://github.com/ARCTraining/inflammation.git
+   6cc98ec..f4915d6  master -> master
 ~~~
 {: .output}
 
-Now let's have the other partner
+Now let's have the other partner (the originator)
 make a different change to their copy
 *without* updating from GitHub:
 
 ~~~
-$ nano mars.txt
-$ cat mars.txt
+$ nano project.txt
+$ cat project.txt
 ~~~
 {: .bash}
 
 ~~~
-Cold and dry, but everything is my favorite color
-The two moons may be a problem for Wolfman
-But the Mummy will appreciate the lack of humidity
-We added a different line in the other copy
+Some initial data analysis to identify how inflammation changes over time after surgery.
+Jane is a Data Scientist and Samit is a statistician. We'll need to determine
+who is responsible for what in this project.
+We may need to bring a third person with Python programming skills into the project.
+The third team member needs to be competent in both Python and R. They
+also need to be familiar with matplotlib and ggplot
+Add a different line to the originator's copy
 ~~~
 {: .output}
 
 We can commit the change locally:
 
 ~~~
-$ git add mars.txt
-$ git commit -m "Add a line in my copy"
+$ git add project.txt
+$ git commit -m "Add a line in the originator's copy"
 ~~~
 {: .bash}
 
 ~~~
-[master 07ebc69] Add a line in my copy
+[master ef10d89] Add a line in the originator's copy
  1 file changed, 1 insertion(+)
 ~~~
 {: .output}
@@ -121,17 +132,18 @@ $ git push origin master
 {: .bash}
 
 ~~~
-To https://github.com/vlad/planets.git
- ! [rejected]        master -> master (non-fast-forward)
-error: failed to push some refs to 'https://github.com/vlad/planets.git'
-hint: Updates were rejected because the tip of your current branch is behind
-hint: its remote counterpart. Merge the remote changes (e.g. 'git pull')
-hint: before pushing again.
+To https://github.com/jane/inflammation.git
+ ! [rejected]        master -> master (fetch first)
+error: failed to push some refs to 'https://github.com/jane/inflammation.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
 hint: See the 'Note about fast-forwards' in 'git push --help' for details.
 ~~~
 {: .output}
 
-![The Conflicting Changes](../fig/conflict.svg)
+![The Conflicting Changes](../fig/conflict.png)
 
 Git detects that the changes made in one copy overlap with those made in the other
 and stops us from trampling on our previous work.
@@ -146,14 +158,15 @@ $ git pull origin master
 {: .bash}
 
 ~~~
-remote: Counting objects: 5, done.
-remote: Compressing objects: 100% (2/2), done.
-remote: Total 3 (delta 1), reused 3 (delta 1)
+remote: Counting objects: 3, done.
+remote: Compressing objects: 100% (1/1), done.
+remote: Total 3 (delta 2), reused 3 (delta 2), pack-reused 0
 Unpacking objects: 100% (3/3), done.
-From https://github.com/vlad/planets
+From https://github.com/jane/inflammation
  * branch            master     -> FETCH_HEAD
-Auto-merging mars.txt
-CONFLICT (content): Merge conflict in mars.txt
+   6cc98ec..f4915d6  master     -> origin/master
+Auto-merging project.txt
+CONFLICT (content): Merge conflict in project.txt
 Automatic merge failed; fix conflicts and then commit the result.
 ~~~
 {: .output}
@@ -162,19 +175,22 @@ Automatic merge failed; fix conflicts and then commit the result.
 and marks that conflict in the affected file:
 
 ~~~
-$ cat mars.txt
+$ cat project.txt
 ~~~
 {: .bash}
 
 ~~~
-Cold and dry, but everything is my favorite color
-The two moons may be a problem for Wolfman
-But the Mummy will appreciate the lack of humidity
+Some initial data analysis to identify how inflammation changes over time after surgery.
+Jane is a Data Scientist and Samit is a statistician. We'll need to determine
+who is responsible for what in this project.
+We may need to bring a third person with Python programming skills into the project.
+The third team member needs to be competent in both Python and R. They
+also need to be familiar with matplotlib and ggplot
 <<<<<<< HEAD
-We added a different line in the other copy
+Add a different line to the originator's copy
 =======
-This line added to Wolfman's copy
->>>>>>> dabb4c8c450e8475aee9b14b4383acc99f42af1d
+This line added to the collaborator's copy
+>>>>>>> f4915d64b522b8f4599fa89b7d194e615462f99f
 ~~~
 {: .output}
 
@@ -192,7 +208,7 @@ or get rid of the change entirely.
 Let's replace both so that the file looks like this:
 
 ~~~
-$ cat mars.txt
+$ cat project.txt
 ~~~
 {: .bash}
 
@@ -205,11 +221,11 @@ We removed the conflict on this line
 {: .output}
 
 To finish merging,
-we add `mars.txt` to the changes being made by the merge
+we add `project.txt` to the changes being made by the merge
 and then commit:
 
 ~~~
-$ git add mars.txt
+$ git add project.txt
 $ git status
 ~~~
 {: .bash}
@@ -221,7 +237,7 @@ All conflicts fixed but you are still merging.
 
 Changes to be committed:
 
-	modified:   mars.txt
+	modified:   project.txt
 
 ~~~
 {: .output}
@@ -244,13 +260,14 @@ $ git push origin master
 {: .bash}
 
 ~~~
-Counting objects: 10, done.
+Counting objects: 7, done.
 Delta compression using up to 4 threads.
-Compressing objects: 100% (6/6), done.
-Writing objects: 100% (6/6), 697 bytes, done.
-Total 6 (delta 2), reused 0 (delta 0)
-To https://github.com/vlad/planets.git
-   dabb4c8..2abf2b1  master -> master
+Compressing objects: 100% (7/7), done.
+Writing objects: 100% (7/7), 755 bytes | 755.00 KiB/s, done.
+Total 7 (delta 4), reused 0 (delta 0)
+remote: Resolving deltas: 100% (4/4), completed with 3 local objects.
+To https://github.com/jane/inflammation.git
+   f4915d6..dc29981  master -> master
 ~~~
 {: .output}
 
@@ -264,35 +281,40 @@ $ git pull origin master
 {: .bash}
 
 ~~~
-remote: Counting objects: 10, done.
-remote: Compressing objects: 100% (4/4), done.
-remote: Total 6 (delta 2), reused 6 (delta 2)
-Unpacking objects: 100% (6/6), done.
-From https://github.com/vlad/planets
+rremote: Counting objects: 7, done.
+remote: Compressing objects: 100% (3/3), done.
+remote: Total 7 (delta 4), reused 7 (delta 4), pack-reused 0
+Unpacking objects: 100% (7/7), done.
+From https://github.com/jane/inflammation
  * branch            master     -> FETCH_HEAD
-Updating dabb4c8..2abf2b1
+   f4915d6..dc29981  master     -> origin/master
+Updating f4915d6..dc29981
 Fast-forward
- mars.txt | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ analysis.txt | 1 +
+ 1 files changed, 1 insertions(+)
 ~~~
 {: .output}
 
 We get the merged file:
 
 ~~~
-$ cat mars.txt
+$ cat project.txt
 ~~~
 {: .bash}
 
 ~~~
-Cold and dry, but everything is my favorite color
-The two moons may be a problem for Wolfman
-But the Mummy will appreciate the lack of humidity
-We removed the conflict on this line
+Some initial data analysis to identify how inflammation changes over time after surgery.
+Jane is a Data Scientist and Samit is a statistician. We'll need to determine
+who is responsible for what in this project.
+We may need to bring a third person with Python programming skills into the project.
+The third team member needs to be competent in both Python and R. They
+also need to be familiar with matplotlib and ggplot
+Add a different line to the originator's copy
+This line added to the collaborator's copy
 ~~~
 {: .output}
 
-We don't need to merge again because Git knows someone has already done that.
+We **don't** need to merge again because Git knows someone has already done that.
 
 Git's ability to resolve conflicts is very useful, but conflict resolution
 costs time and effort, and can introduce errors if conflicts are not resolved
@@ -332,15 +354,19 @@ Conflicts can also be minimized with project management strategies:
 >
 > > ## Solution
 > >
-> > Let's try it. Suppose Dracula takes a picture of Martian surface and
-> > calls it `mars.jpg`.
+> > Let's try it. Suppose Jane saves an image of a chart she creates and
+> > calls it `chart1.jpg`.
 > >
-> > If you do not have an image file of Mars available, you can create
+> > If you do not have an image file of a chart somewhere, you can create
 > > a dummy binary file like this:
 > >
 > > ~~~
-> > $ head --bytes 1024 /dev/urandom > mars.jpg
-> > $ ls -lh mars.jpg
+> > $ head --bytes 1024 /dev/urandom > chart1.jpg
+> > $ ls -lh chart1.jpg
+> >
+> > or on a Mac:
+> > $ head -c 1024 /dev/urandom > chart1.jpg
+> > $ ls -lh chart1.jpg
 > > ~~~
 > > {: .bash}
 > >
@@ -352,24 +378,26 @@ Conflicts can also be minimized with project management strategies:
 > > `ls` shows us that this created a 1-kilobyte file. It is full of
 > > random bytes read from the special file, `/dev/urandom`.
 > >
-> > Now, suppose Dracula adds `mars.jpg` to his repository:
+> > Now, suppose Jane adds `chart1.jpg` to her repository:
 > >
 > > ~~~
-> > $ git add mars.jpg
-> > $ git commit -m "Add picture of Martian surface"
+> > $ git add chart1.jpg
+> > $ git commit -m "Add a chart image"
 > > ~~~
 > > {: .bash}
 > >
 > > ~~~
-> > [master 8e4115c] Add picture of Martian surface
-> >  1 file changed, 0 insertions(+), 0 deletions(-)
-> >  create mode 100644 mars.jpg
+> > [master c769bc5] Add a chart image
+> > 1 file changed, 0 insertions(+), 0 deletions(-)
+> > create mode 100644 chart1.jpg
 > > ~~~
 > > {: .output}
 > >
-> > Suppose that Wolfman has added a similar picture in the meantime.
-> > His is a picture of the Martian sky, but it is *also* called `mars.jpg`.
-> > When Dracula tries to push, he gets a familiar message:
+> > Suppose that Jane's collaborator has added a similar picture in the meantime
+> > and pushed it up to the Github repository.
+> >
+> > His is a picture of another chart, but it is *also* called `chart1.jpg`.
+> > When Jane tries to push, she gets a familiar message:
 > >
 > > ~~~
 > > $ git push origin master
@@ -377,14 +405,14 @@ Conflicts can also be minimized with project management strategies:
 > > {: .bash}
 > >
 > > ~~~
-> > To https://github.com/vlad/planets.git
-> >  ! [rejected]        master -> master (fetch first)
-> > error: failed to push some refs to 'https://github.com/vlad/planets.git'
-> > hint: Updates were rejected because the remote contains work that you do
-> > hint: not have locally. This is usually caused by another repository pushing
-> > hint: to the same ref. You may want to first integrate the remote changes
-> > hint: (e.g., 'git pull ...') before pushing again.
-> > hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+To https://github.com/jane/inflammation.git
+ ! [rejected]        master -> master (fetch first)
+error: failed to push some refs to 'https://github.com/jane/inflammation.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
 > > ~~~
 > > {: .output}
 > >
@@ -402,23 +430,23 @@ Conflicts can also be minimized with project management strategies:
 > > $ git pull origin master
 > > remote: Counting objects: 3, done.
 > > remote: Compressing objects: 100% (3/3), done.
-> > remote: Total 3 (delta 0), reused 0 (delta 0)
+> > remote: Total 3 (delta 0), reused 3 (delta 0), pack-reused 0
 > > Unpacking objects: 100% (3/3), done.
-> > From https://github.com/vlad/planets.git
+> > From https://github.com/ARCTraining/inflammation
 > >  * branch            master     -> FETCH_HEAD
-> >    6a67967..439dc8c  master     -> origin/master
-> > warning: Cannot merge binary files: mars.jpg (HEAD vs. 439dc8c08869c342438f6dc4a2b615b05b93c76e)
-> > Auto-merging mars.jpg
-> > CONFLICT (add/add): Merge conflict in mars.jpg
+> >   dc29981..c769bc5  master     -> origin/master
+> > warning: Cannot merge binary files: chart1.jpg (HEAD vs. c769bc59aa612198cf77ac01a9e8f8479d7940ea)
+> > Auto-merging chart1.jpg
+> > CONFLICT (add/add): Merge conflict in chart1.jpg
 > > Automatic merge failed; fix conflicts and then commit the result.
 > > ~~~
 > > {: .output}
 > >
-> > The conflict message here is mostly the same as it was for `mars.txt`, but
+> > The conflict message here is mostly the same as it was for `project.txt`, but
 > > there is one key additional line:
 > >
 > > ~~~
-> > warning: Cannot merge binary files: mars.jpg (HEAD vs. 439dc8c08869c342438f6dc4a2b615b05b93c76e)
+> > warning: Cannot merge binary files: chart1.jpg (HEAD vs. c769bc59aa612198cf77ac01a9e8f8479d7940ea)
 > > ~~~
 > >
 > > Git cannot automatically insert conflict markers into an image as it does
@@ -426,34 +454,34 @@ Conflicts can also be minimized with project management strategies:
 > > the version we want to keep. Then we can add and commit this version.
 > >
 > > On the key line above, Git has conveniently given us commit identifiers
-> > for the two versions of `mars.jpg`. Our version is `HEAD`, and Wolfman's
-> > version is `439dc8c0...`. If we want to use our version, we can use
+> > for the two versions of `chart1.jpg`. Our version is `HEAD`, and the collaborator's
+> > version is `c769bc5...`. If we want to use our version, we can use
 > > `git checkout`:
 > >
 > > ~~~
-> > $ git checkout HEAD mars.jpg
-> > $ git add mars.jpg
-> > $ git commit -m "Use image of surface instead of sky"
+> > $ git checkout HEAD chart1.jpg
+> > $ git add chart1.jpg
+> > $ git commit -m "Use the greyscale image instead of the colour one"
 > > ~~~
 > > {: .bash}
 > >
 > > ~~~
-> > [master 21032c3] Use image of surface instead of sky
+> > [master 860c242] Use the greyscale image instead of the colour one
 > > ~~~
 > > {: .output}
 > >
-> > If instead we want to use Wolfman's version, we can use `git checkout` with
-> > Wolfman's commit identifier, `439dc8c0`:
+> > If instead we want to use our collaborator's version, we can use `git checkout` with
+> > their commit identifier, `c769bc5`:
 > >
 > > ~~~
-> > $ git checkout 439dc8c0 mars.jpg
-> > $ git add mars.jpg
-> > $ git commit -m "Use image of sky instead of surface"
+> > $ git checkout c769bc5 chart1.jpg
+> > $ git add chart1.jpg
+> > $ git commit -m "Use the colour image instead of the greyscale one"
 > > ~~~
 > > {: .bash}
 > >
 > > ~~~
-> > [master da21b34] Use image of sky instead of surface
+> > [master da21b34] Use the colour image instead of the greyscale one
 > > ~~~
 > > {: .output}
 > >
@@ -463,32 +491,32 @@ Conflicts can also be minimized with project management strategies:
 > > image and rename it:
 > >
 > > ~~~
-> > $ git checkout HEAD mars.jpg
-> > $ git mv mars.jpg mars-surface.jpg
-> > $ git checkout 439dc8c0 mars.jpg
-> > $ mv mars.jpg mars-sky.jpg
+> > $ git checkout HEAD chart1.jpg
+> > $ git mv chart1.jpg chart1-grey.jpg
+> > $ git checkout c769bc5 chart1.jpg
+> > $ git mv chart1.jpg chart1-colour.jpg
 > > ~~~
 > > {: .bash}
 > >
-> > Then, remove the old `mars.jpg` and add the two new files:
+> > Then, remove the old `chart1.jpg` (it it is still there) and add the two new files:
 > >
 > > ~~~
-> > $ git rm mars.jpg
-> > $ git add mars-surface.jpg
-> > $ git add mars-sky.jpg
-> > $ git commit -m "Use two images: surface and sky"
+> > $ git rm chart1.jpg
+> > $ git add chart1-colour.jpg
+> > $ git add chart1-grey.jpg
+> > $ git commit -m "Use two images: grey and colour"
 > > ~~~
 > > {: .bash}
 > >
 > > ~~~
-> > [master 94ae08c] Use two images: surface and sky
-> >  2 files changed, 0 insertions(+), 0 deletions(-)
-> >  create mode 100644 mars-sky.jpg
-> >  rename mars.jpg => mars-surface.jpg (100%)
+> >[master 6aa1183] Use two images: grey and colour
+> > 2 files changed, 0 insertions(+), 0 deletions(-)
+> > create mode 100644 chart1-colour.jpg
+> > rename chart1.jpg => chart1-grey.jpg (100%)
 > > ~~~
 > > {: .output}
 > >
-> > Now both images of Mars are checked into the repository, and `mars.jpg`
+> > Now both images are checked into the repository, and `chart1.jpg`
 > > no longer exists.
 > {: .solution}
 {: .challenge}

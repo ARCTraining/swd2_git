@@ -56,6 +56,11 @@ decision only makes it more complicated later, because each time a new
 collaborator starts contributing, they, too, hold copyright and will
 thus need to be asked for approval once a license is chosen.
 
+At the time of writing, the University does not issue clear guidance on **what**
+are suitable licences.
+
+Before attaching a licence to your work, speak with your supervisor.
+
 > ## Can I Use Open License?
 >
 > Find out whether you are allowed to apply an open license to your software.

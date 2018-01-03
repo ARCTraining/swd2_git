@@ -2,15 +2,12 @@
 layout: lesson
 root: .
 ---
-
-Wolfman and Dracula have been hired by Universal Missions (a space
-services spinoff from Euphoric State University) to investigate if it
-is possible to send their next planetary lander to Mars.  They want to
-be able to work on the plans at the same time, but they have run into
+Here's our scenario. Two researchers, Samit and Jane, are working on a software development project to write some code and supporting documentation to analyse post-operative inflammation data recorded from patients on a number of wards in the local hospital.
+They want to be able to work on the plans at the same time, but they have run into
 problems doing this in the past.  If they take turns, each one will
 spend a lot of time waiting for the other to finish, but if they work
 on their own copies and email changes back and forth things will be
-lost, overwritten, or duplicated.
+lost, overwritten, or duplicated. They know, from past experience that this is a very inefficient way of working.
 
 A colleague suggests using [version control]({{ page.root }}/reference/#version-control) to
 manage their work. Version control is better than mailing files back and forth:

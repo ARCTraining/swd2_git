@@ -19,39 +19,39 @@ keypoints:
 ---
 
 First let's make sure we're still in the right directory.
-You should be in the `planets` directory.
+You should be in the `inflammation` directory.
 
 ~~~
 $ pwd
 ~~~
 {: .bash}
 
-If you are still in `moons` navigate back up to `planets`
+If you are still in `infection` navigate back up to `inflammation`
 
 ~~~
 $ cd ..
 ~~~
 {: .bash}
 
-Let's create a file called `mars.txt` that contains some notes
-about the Red Planet's suitability as a base.
-We'll use `nano` to edit the file;
-you can use whatever editor you like.
+Let's create a file called `project.txt` that contains some notes
+about what we plan to do in this project.
+We'll use `nano` to edit the file but you can use whatever editor you like.
+
 In particular, this does not have to be the `core.editor` you set globally earlier. But remember, the bash command to create or edit a new file will depend on the editor you choose (it might not be `nano`). For a refresher on text editors, check out ["Which Editor?"](https://swcarpentry.github.io/shell-novice/03-create/) in [The Unix Shell](https://swcarpentry.github.io/shell-novice/) lesson.
 
 ~~~
-$ nano mars.txt
+$ nano project.txt
 ~~~
 {: .bash}
 
-Type the text below into the `mars.txt` file:
+Type the text below into the `project.txt` file:
 
 ~~~
-Cold and dry, but everything is my favorite color
+Some initial data analysis to identify how inflammation changes over time after surgery.
 ~~~
 {: .output}
 
-`mars.txt` now contains a single line, which we can see by running:
+`project.txt` now contains a single line, which we can see by running:
 
 ~~~
 $ ls
@@ -59,22 +59,21 @@ $ ls
 {: .bash}
 
 ~~~
-mars.txt
+project.txt
 ~~~
 {: .output}
 
 ~~~
-$ cat mars.txt
+$ cat project.txt
 ~~~
 {: .bash}
 
 ~~~
-Cold and dry, but everything is my favorite color
+Some initial data analysis to identify how inflammation changes over time after surgery.
 ~~~
 {: .output}
 
-If we check the status of our project again,
-Git tells us that it's noticed the new file:
+Now, if we check the status of our project again, Git tells us that it's noticed the new file:
 
 ~~~
 $ git status
@@ -87,9 +86,10 @@ On branch master
 Initial commit
 
 Untracked files:
-   (use "git add <file>..." to include in what will be committed)
+  (use "git add <file>..." to include in what will be committed)
 
-	mars.txt
+	project.txt
+
 nothing added to commit but untracked files present (use "git add" to track)
 ~~~
 {: .output}
@@ -99,7 +99,7 @@ that Git isn't keeping track of.
 We can tell Git to track a file using `git add`:
 
 ~~~
-$ git add mars.txt
+$ git add project.txt
 ~~~
 {: .bash}
 
@@ -118,25 +118,26 @@ Initial commit
 Changes to be committed:
   (use "git rm --cached <file>..." to unstage)
 
-	new file:   mars.txt
+	new file:   project.txt
 
 ~~~
 {: .output}
 
-Git now knows that it's supposed to keep track of `mars.txt`,
+Git now knows that it's supposed to keep track of `project.txt`,
 but it hasn't recorded these changes as a commit yet.
 To get it to do that,
 we need to run one more command:
 
 ~~~
-$ git commit -m "Start notes on Mars as a base"
+$ git commit -m "Start notes on the patient inflammation project"
 ~~~
 {: .bash}
 
 ~~~
-[master (root-commit) f22b25e] Start notes on Mars as a base
+[[master (root-commit) 40b8a94] Start notes on the patient inflammation project
  1 file changed, 1 insertion(+)
- create mode 100644 mars.txt
+ create mode 100644 project.txt
+
 ~~~
 {: .output}
 
@@ -155,7 +156,7 @@ so that we can write a longer message.
 
 [Good commit messages][commit-messages] start with a brief (<50 characters) summary of
 changes made in the commit.  If you want to go into more detail, add
-a blank line between the summary line and your additional notes.
+a blank line between the summary line and your additional notes. They are usually written in the present tense.
 
 If we run `git status` now:
 
@@ -166,7 +167,8 @@ $ git status
 
 ~~~
 On branch master
-nothing to commit, working directory clean
+nothing to commit, working tree clean
+
 ~~~
 {: .output}
 
@@ -180,11 +182,12 @@ $ git log
 {: .bash}
 
 ~~~
-commit f22b25e3233b4645dabd0d81e651fe074bd8e73b
-Author: Vlad Dracula <vlad@tran.sylvan.ia>
-Date:   Thu Aug 22 09:51:46 2013 -0400
+commit 40b8a9400329ed7324116cc9392dc8e4842d8501 (HEAD -> master)
+Author: Jane Smith <jane.smith@university.ac.uk>
+Date:   Wed Jan 3 10:34:07 2018 +0000
 
-    Start notes on Mars as a base
+    Start notes on the patient inflammation project
+
 ~~~
 {: .output}
 
@@ -199,26 +202,27 @@ and the log message Git was given when the commit was created.
 
 > ## Where Are My Changes?
 >
-> If we run `ls` at this point, we will still see just one file called `mars.txt`.
+> If we run `ls` at this point, we will still see just one file called `project.txt`.
 > That's because Git saves information about files' history
 > in the special `.git` directory mentioned earlier
 > so that our filesystem doesn't become cluttered
 > (and so that we can't accidentally edit or delete an old version).
 {: .callout}
 
-Now suppose Dracula adds more information to the file.
+Now suppose Jane adds more information to the file.
 (Again, we'll edit with `nano` and then `cat` the file to show its contents;
 you may use a different editor, and don't need to `cat`.)
 
 ~~~
-$ nano mars.txt
-$ cat mars.txt
+$ nano project.txt
+$ cat project.txt
 ~~~
 {: .bash}
 
 ~~~
-Cold and dry, but everything is my favorite color
-The two moons may be a problem for Wolfman
+Some initial data analysis to identify how inflammation changes over time after surgery.
+Jane is a Data Scientist and Samit is a statistician. We'll need to determine
+who is responsible for what in this project.
 ~~~
 {: .output}
 
@@ -236,7 +240,7 @@ Changes not staged for commit:
   (use "git add <file>..." to update what will be committed)
   (use "git checkout -- <file>..." to discard changes in working directory)
 
-	modified:   mars.txt
+	modified:   project.txt
 
 no changes added to commit (use "git add" and/or "git commit -a")
 ~~~
@@ -259,13 +263,14 @@ $ git diff
 {: .bash}
 
 ~~~
-diff --git a/mars.txt b/mars.txt
-index df0654a..315bf3a 100644
---- a/mars.txt
-+++ b/mars.txt
-@@ -1 +1,2 @@
- Cold and dry, but everything is my favorite color
-+The two moons may be a problem for Wolfman
+diff --git a/project.txt b/project.txt
+index 17e2b79..2485f1d 100644
+--- a/project.txt
++++ b/project.txt
+@@ -1 +1,3 @@
+ Some initial data analysis to identify how inflammation changes over time after surgery.
++Jane is a Data Scientist and Samit is a statistician. We'll need to determine
++who is responsible for what in this project.
 ~~~
 {: .output}
 
@@ -278,17 +283,17 @@ If we break it down into pieces:
     comparing the old and new versions of the file.
 2.  The second line tells exactly which versions of the file
     Git is comparing;
-    `df0654a` and `315bf3a` are unique computer-generated labels for those versions.
+    `17e2b79` and `2485f1d` are unique computer-generated labels for those versions.
 3.  The third and fourth lines once again show the name of the file being changed.
 4.  The remaining lines are the most interesting, they show us the actual differences
     and the lines on which they occur.
     In particular,
-    the `+` marker in the first column shows where we added a line.
+    the `+` marker in the first column shows where we added new lines.
 
 After reviewing our change, it's time to commit it:
 
 ~~~
-$ git commit -m "Add concerns about effects of Mars' moons on Wolfman"
+$ git commit -m "Add note about project responsibilities"
 $ git status
 ~~~
 {: .bash}
@@ -299,7 +304,7 @@ Changes not staged for commit:
   (use "git add <file>..." to update what will be committed)
   (use "git checkout -- <file>..." to discard changes in working directory)
 
-	modified:   mars.txt
+	modified:   project.txt
 
 no changes added to commit (use "git add" and/or "git commit -a")
 ~~~
@@ -310,14 +315,15 @@ Git won't commit because we didn't use `git add` first.
 Let's fix that:
 
 ~~~
-$ git add mars.txt
-$ git commit -m "Add concerns about effects of Mars' moons on Wolfman"
+$ git add project.txt
+$ git commit -m "Add note about project responsibilities"
 ~~~
 {: .bash}
 
 ~~~
-[master 34961b1] Add concerns about effects of Mars' moons on Wolfman
- 1 file changed, 1 insertion(+)
+[master 71ed26a] Add note about project responsibilities
+ 1 file changed, 2 insertions(+)
+
 ~~~
 {: .output}
 
@@ -355,7 +361,7 @@ but not yet committed.
 > the stage for the snapshot because you used `-a`!)
 > Try to stage things manually,
 > or you might find yourself searching for "git undo commit" more
-> than you would like!
+> than you would like.
 {: .callout}
 
 ![The Git Staging Area](../fig/git-staging-area.svg)
@@ -367,15 +373,16 @@ First,
 we'll add another line to the file:
 
 ~~~
-$ nano mars.txt
-$ cat mars.txt
+$ nano project.txt
+$ cat project.txt
 ~~~
 {: .bash}
 
 ~~~
-Cold and dry, but everything is my favorite color
-The two moons may be a problem for Wolfman
-But the Mummy will appreciate the lack of humidity
+Some initial data analysis to identify how inflammation changes over time after surgery.
+Jane is a Data Scientist and Samit is a statistician. We'll need to determine
+who is responsible for what in this project.
+We may need to bring a third person with Python programming skills into the project.
 ~~~
 {: .output}
 
@@ -385,14 +392,15 @@ $ git diff
 {: .bash}
 
 ~~~
-diff --git a/mars.txt b/mars.txt
-index 315bf3a..b36abfd 100644
---- a/mars.txt
-+++ b/mars.txt
-@@ -1,2 +1,3 @@
- Cold and dry, but everything is my favorite color
- The two moons may be a problem for Wolfman
-+But the Mummy will appreciate the lack of humidity
+diff --git a/project.txt b/project.txt
+index 2485f1d..3f80947 100644
+--- a/project.txt
++++ b/project.txt
+@@ -1,3 +1,4 @@
+ Some initial data analysis to identify how inflammation changes over time after surgery.
+ Jane is a Data Scientist and Samit is a statistician. We'll need to determine
+ who is responsible for what in this project.
++We may need to bring a third person with Python programming skills into the project.
 ~~~
 {: .output}
 
@@ -403,7 +411,7 @@ Now let's put that change in the staging area
 and see what `git diff` reports:
 
 ~~~
-$ git add mars.txt
+$ git add project.txt
 $ git diff
 ~~~
 {: .bash}
@@ -421,14 +429,15 @@ $ git diff --staged
 {: .bash}
 
 ~~~
-diff --git a/mars.txt b/mars.txt
-index 315bf3a..b36abfd 100644
---- a/mars.txt
-+++ b/mars.txt
-@@ -1,2 +1,3 @@
- Cold and dry, but everything is my favorite color
- The two moons may be a problem for Wolfman
-+But the Mummy will appreciate the lack of humidity
+diff --git a/project.txt b/project.txt
+index 2485f1d..3f80947 100644
+--- a/project.txt
++++ b/project.txt
+@@ -1,3 +1,4 @@
+ Some initial data analysis to identify how inflammation changes over time after surgery.
+ Jane is a Data Scientist and Samit is a statistician. We'll need to determine
+ who is responsible for what in this project.
++We may need to bring a third person with Python programming skills into the project.
 ~~~
 {: .output}
 
@@ -438,12 +447,12 @@ and what's in the staging area.
 Let's save our changes:
 
 ~~~
-$ git commit -m "Discuss concerns about Mars' climate for Mummy"
+$ git commit -m "Add note about extra team members"
 ~~~
 {: .bash}
 
 ~~~
-[master 005937f] Discuss concerns about Mars' climate for Mummy
+[master 005937f] Add note about extra team members
  1 file changed, 1 insertion(+)
 ~~~
 {: .output}
@@ -469,23 +478,23 @@ $ git log
 {: .bash}
 
 ~~~
-commit 005937fbe2a98fb83f0ade869025dc2636b4dad5
-Author: Vlad Dracula <vlad@tran.sylvan.ia>
-Date:   Thu Aug 22 10:14:07 2013 -0400
+commit 63f6bc6039c12ce897cf3f02bda1e95fd30fef58 (HEAD -> master)
+Author: Jane Smith <jane.smith@university.ac.uk>
+Date:   Wed Jan 3 10:42:09 2018 +0000
 
-    Discuss concerns about Mars' climate for Mummy
+    Add note about extra team members
 
-commit 34961b159c27df3b475cfe4415d94a6d1fcd064d
-Author: Vlad Dracula <vlad@tran.sylvan.ia>
-Date:   Thu Aug 22 10:07:21 2013 -0400
+commit 71ed26a8f840d2929f5120327ea0accd55074070
+Author: Jane Smith <jane.smith@university.ac.uk>
+Date:   Wed Jan 3 10:39:19 2018 +0000
 
-    Add concerns about effects of Mars' moons on Wolfman
+    Add note about project responsibilities
 
-commit f22b25e3233b4645dabd0d81e651fe074bd8e73b
-Author: Vlad Dracula <vlad@tran.sylvan.ia>
-Date:   Thu Aug 22 09:51:46 2013 -0400
+commit 40b8a9400329ed7324116cc9392dc8e4842d8501
+Author: Jane Smith <jane.smith@university.ac.uk>
+Date:   Wed Jan 3 10:34:07 2018 +0000
 
-    Start notes on Mars as a base
+    Start notes on the patient inflammation project
 ~~~
 {: .output}
 
@@ -523,11 +532,11 @@ Date:   Thu Aug 22 09:51:46 2013 -0400
 > {: .bash}
 >
 > ~~~
-> commit 005937fbe2a98fb83f0ade869025dc2636b4dad5
-> Author: Vlad Dracula <vlad@tran.sylvan.ia>
-> Date:   Thu Aug 22 10:14:07 2013 -0400
+> commit 63f6bc6039c12ce897cf3f02bda1e95fd30fef58 (HEAD -> master)
+> Author: Jane Smith <jane.smith@university.ac.uk>
+> Date:   Wed Jan 3 10:42:09 2018 +0000
 >
->    Discuss concerns about Mars' climate for Mummy
+>    Add note about extra team members
 > ~~~
 > {: .output}
 >
@@ -539,9 +548,9 @@ Date:   Thu Aug 22 09:51:46 2013 -0400
 > ~~~
 > {: .bash}
 > ~~~
-> * 005937f Discuss concerns about Mars' climate for Mummy
-> * 34961b1 Add concerns about effects of Mars' moons on Wolfman
-> * f22b25e Start notes on Mars as a base
+> 63f6bc6 (HEAD -> master) Add note about extra team members
+> 71ed26a Add note about project responsibilities
+> 40b8a94 Start notes on the patient inflammation project
 > ~~~
 > {: .output}
 >
@@ -553,9 +562,9 @@ Date:   Thu Aug 22 09:51:46 2013 -0400
 > ~~~
 > {: .bash}
 > ~~~
-> * 005937f Discuss concerns about Mars' climate for Mummy (HEAD, master)
-> * 34961b1 Add concerns about effects of Mars' moons on Wolfman
-> * f22b25e Start notes on Mars as a base
+> * 63f6bc6 (HEAD -> master) Add note about extra team members
+> * 71ed26a Add note about project responsibilities
+> * 40b8a94 Start notes on the patient inflammation project
 > ~~~
 > {: .output}
 {: .callout}
@@ -603,11 +612,11 @@ repository (`git commit`):
 > ## Choosing a Commit Message
 >
 > Which of the following commit messages would be most appropriate for the
-> last commit made to `mars.txt`?
+> last commit made to `project.txt`?
 >
 > 1. "Changes"
-> 2. "Added line 'But the Mummy will appreciate the lack of humidity' to mars.txt"
-> 3. "Discuss effects of Mars' climate on the Mummy"
+> 2. "Added line 'We discussed who might be responsible for what' to project.txt"
+> 3. "Add note about project responsibilities"
 >
 > > ## Solution
 > > Answer 1 is not descriptive enough,
@@ -645,56 +654,56 @@ repository (`git commit`):
 > The staging area can hold changes from any number of files
 > that you want to commit as a single snapshot.
 >
-> 1. Add some text to `mars.txt` noting your decision
-> to consider Venus as a base
-> 2. Create a new file `venus.txt` with your initial thoughts
-> about Venus as a base for you and your friends
+> 1. Add some text to `project.txt` noting your decision
+> on what a third tem member might be resposnible for.
+> 2. Create a new file `analysis.txt` with your initial thoughts
+> about what data would be useful for your analysis project
 > 3. Add changes from both files to the staging area,
 > and commit those changes.
 >
 > > ## Solution
 > >
-> > First we make our changes to the `mars.txt` and `venus.txt` files:
+> > First we make our changes to the `project.txt` and `analysis.txt` files:
 > > ~~~
-> > $ nano mars.txt
-> > $ cat mars.txt
+> > $ nano project.txt
+> > $ cat project.txt
 > > ~~~
 > > {: .bash}
 > > ~~~
-> > Maybe I should start with a base on Venus.
+> > The third team member needs to be competent in both Python and R. They
+> > also need to be familiar with matplotlib and ggplot
 > > ~~~
 > > {: .output}
 > > ~~~
-> > $ nano venus.txt
-> > $ cat venus.txt
+> > $ nano analysis.txt
+> > $ cat analysis.txt
 > > ~~~
 > > {: .bash}
 > > ~~~
-> > Venus is a nice planet and I definitely should consider it as a base.
+> > We need data about patients, wards, dates, temperatures and inflammation size
 > > ~~~
 > > {: .output}
 > > Now you can add both files to the staging area. We can do that in one line:
 > >
 > > ~~~
-> > $ git add mars.txt venus.txt
+> > $ git add project.txt analysis.txt
 > > ~~~
 > > {: .bash}
 > > Or with multiple commands:
 > > ~~~
-> > $ git add mars.txt
-> > $ git add venus.txt
+> > $ git add project.txt
+> > $ git add analysis.txt
 > > ~~~
 > > {: .bash}
 > > Now the files are ready to commit. You can check that using `git status`. If you are ready to commit use:
 > > ~~~
-> > $ git commit -m "Write plans to start a base on Venus"
+> > $ git commit -m "Add note about what data would be useful"
 > > ~~~
 > > {: .bash}
 > > ~~~
-> > [master cc127c2]
-> >  Write plans to start a base on Venus
-> >  2 files changed, 2 insertions(+)
-> >  create mode 100644 venus.txt
+> > [master a264d5c] Add note about what data would be useful
+> > 2 files changed, 3 insertions(+)
+> > create mode 100644 analysis.txt
 > > ~~~
 > > {: .output}
 > {: .solution}
@@ -715,7 +724,7 @@ repository (`git commit`):
 > When committing you can name someone else as the author:
 >
 > ~~~
-> $ git commit --author="Vlad Dracula <vlad@tran.sylvan.ia>"
+> $ git commit --author="Samit Patel <samit.patel@university.ac.uk>"
 > ~~~
 > {: .bash}
 >
@@ -728,26 +737,26 @@ repository (`git commit`):
 > >
 > > ~~~
 > > $ git add me.txt
-> > $ git commit -m "Update Vlad's bio." --author="Frank N. Stein <franky@monster.com>"
+> > $ git commit -m "Update Jane's bio." --author="Pete Jones <pete.jones@university.ac.uk>"
 > > ~~~
 > > {: .bash}
 > > ~~~
-> > [master 4162a51] Update Vlad's bio.
-> > Author: Frank N. Stein <franky@monster.com>
+> > [master 4162a51] Update Jane's bio.
+> > Author: Pete Jones <pete.jones@university.ac.uk>
 > > 1 file changed, 2 insertions(+), 2 deletions(-)
 > >
 > > $ git log --format=full
 > > commit 4162a51b273ba799a9d395dd70c45d96dba4e2ff
-> > Author: Frank N. Stein <franky@monster.com>
-> > Commit: Vlad Dracula <vlad@tran.sylvan.ia>
+> > Author: Frank N. Stein <pete.jones@university.ac.uk>
+> > Commit: Jane Smith <jane.smith@university.ac.uk>
 > >
-> > Update Vlad's bio.
+> > Update Jane's bio.
 > >
 > > commit aaa3271e5e26f75f11892718e83a3e2743fab8ea
-> > Author: Vlad Dracula <vlad@tran.sylvan.ia>
-> > Commit: Vlad Dracula <vlad@tran.sylvan.ia>
+> > Author: Jane Smith <jane.smith@university.ac.uk>
+> > Commit: Jane Smith <jane.smith@university.ac.uk>
 > >
-> > Vlad's initial bio.
+> > Jane's initial bio.
 > > ~~~
 > > {: .output}
 > {: .solution}

@@ -12,15 +12,19 @@ keypoints:
 ---
 
 The second big question for groups that want to open up their work is where to
-host their code and data.  One option is for the lab, the department, or the
-university to provide a server, manage accounts and backups, and so on.  The
-main benefit of this is that it clarifies who owns what, which is particularly
+host their code and data.  One option is for the lab, the school or department, or the
+university to provide a server, manage accounts and backups, and so on.
+
+The main benefit of this is that it clarifies who owns what, which is particularly
 important if any of the material is sensitive (i.e., relates to experiments
 involving human subjects or may be used in a patent application).  The main
 drawbacks are the cost of providing the service and its longevity: a scientist
 who has spent ten years collecting data would like to be sure that data will
 still be available ten years from now, but that's well beyond the lifespan of
 most of the grants that fund academic infrastructure.
+
+At Leeds there is a simple remote repository service called [Leeds Develop](https://develop.leeds.ac.uk/)
+Please contact `develop-service-users@lists.leeds.ac.uk` if you wish to use the service.
 
 Another option is to purchase a domain and pay an Internet service provider
 (ISP) to host it.  This gives the individual or group more control, and

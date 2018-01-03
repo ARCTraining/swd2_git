@@ -14,24 +14,26 @@ keypoints:
 - "`git pull` copies changes from a remote repository to a local repository."
 ---
 
-Version control really comes into its own when we begin to collaborate with
+Version control really comes into its own when we use it to collaborate with
 other people.  We already have most of the machinery we need to do this; the
-only thing missing is to copy changes from one repository to another.
+only thing missing is the ability to copy changes from one repository to another.
 
 Systems like Git allow us to move work between any two repositories.  In
-practice, though, it's easiest to use one copy as a central hub, and to keep it
-on the web rather than on someone's laptop.  Most programmers use hosting
+practice, though, it's easiest to use one copy as a central hub, and to keep that copy
+on the web rather than on someone's laptop.  
+
+Most programmers use hosting
 services like [GitHub](https://github.com), [BitBucket](https://bitbucket.org) or
 [GitLab](https://gitlab.com/) to hold those master copies; we'll explore the pros
 and cons of this in the final section of this lesson.
 
 Let's start by sharing the changes we've made to our current project with the
 world.  Log in to GitHub, then click on the icon in the top right corner to
-create a new repository called `planets`:
+create a new repository called `inflammation`:
 
 ![Creating a Repository on GitHub (Step 1)](../fig/github-create-repo-01.png)
 
-Name your repository "planets" and then click "Create Repository":
+Name your repository "inflamation" and then click "Create Repository":
 
 ![Creating a Repository on GitHub (Step 2)](../fig/github-create-repo-02.png)
 
@@ -43,16 +45,16 @@ information on how to configure your local repository:
 This effectively does the following on GitHub's servers:
 
 ~~~
-$ mkdir planets
-$ cd planets
+$ mkdir inflammation
+$ cd inflammation
 $ git init
 ~~~
 {: .bash}
 
-Our local repository still contains our earlier work on `mars.txt`, but the
+Our local repository still contains our earlier work on the text files, but the
 remote repository on GitHub doesn't contain any files yet:
 
-![Freshly-Made GitHub Repository](../fig/git-freshly-made-github-repo.svg)
+![Freshly-Made GitHub Repository](../fig/git-freshly-made-github-repo.png)
 
 The next step is to connect the two repositories.  We do this by making the
 GitHub repository a [remote]({{ page.root }}/reference/#remote) for the local repository.
@@ -77,16 +79,15 @@ SSH to HTTPS.
 
 ![Changing the Repository URL on GitHub](../fig/github-change-repo-string.png)
 
-Copy that URL from the browser, go into the local `planets` repository, and run
+Copy that URL from the browser, go into the local `inflammation` repository, and run
 this command:
 
 ~~~
-$ git remote add origin https://github.com/vlad/planets.git
+$ git remote add origin https://github.com/jane/inflammation.git
 ~~~
 {: .bash}
 
-Make sure to use the URL for your repository rather than Vlad's: the only
-difference should be your username instead of `vlad`.
+Make sure to use the URL for your repository rather than Jane's.
 
 We can check that the command has worked by running `git remote -v`:
 
@@ -96,8 +97,8 @@ $ git remote -v
 {: .bash}
 
 ~~~
-origin   https://github.com/vlad/planets.git (push)
-origin   https://github.com/vlad/planets.git (fetch)
+origin	https://github.com/ARCTraining/inflammation.git (fetch)
+origin	https://github.com/ARCTraining/inflammation.git (push)
 ~~~
 {: .output}
 
@@ -113,14 +114,14 @@ $ git push origin master
 {: .bash}
 
 ~~~
-Counting objects: 9, done.
+Counting objects: 16, done.
 Delta compression using up to 4 threads.
-Compressing objects: 100% (6/6), done.
-Writing objects: 100% (9/9), 821 bytes, done.
-Total 9 (delta 2), reused 0 (delta 0)
-To https://github.com/vlad/planets
+Compressing objects: 100% (13/13), done.
+Writing objects: 100% (16/16), 1.62 KiB | 1.62 MiB/s, done.
+Total 16 (delta 4), reused 0 (delta 0)
+remote: Resolving deltas: 100% (4/4), done.
+To https://github.com/ARCTraining/inflammation.git
  * [new branch]      master -> master
-Branch master set up to track remote branch master from origin.
 ~~~
 {: .output}
 
@@ -190,9 +191,10 @@ $ git pull origin master
 {: .bash}
 
 ~~~
-From https://github.com/vlad/planets
+From https://github.com/ARCTraining/inflammation
  * branch            master     -> FETCH_HEAD
 Already up-to-date.
+
 ~~~
 {: .output}
 
@@ -202,7 +204,7 @@ GitHub, though, this command would download them to our local repository.
 
 > ## GitHub GUI
 >
-> Browse to your `planets` repository on GitHub.
+> Browse to your `inflammation` repository on GitHub.
 > Under the Code tab, find and click on the text that says "XX commits" (where "XX" is some number).
 > Hover over, and click on, the three buttons to the right of each commit.
 > What information can you gather/explore from these buttons?

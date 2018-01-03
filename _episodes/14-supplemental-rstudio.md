@@ -15,7 +15,7 @@ integration with Git. There are some more obscure Git features that you still
 need to use the command-line for, but RStudio has a nice interface for most
 common operations.
 
-RStudio let's you create a [project][rstudio-projects] associated with
+RStudio let's you create a [project][https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects] associated with
 a given directory. This is a way to keep track of related files. One
 of the way to keep track of them is via version control! To get
 started using RStudio for version control, let's make a new project:
@@ -55,7 +55,7 @@ to use Git:
 ![](../fig/RStudio_screenshot_afterclone.png)
 
 To edit the files in your repository, you can click on them from the panel in
-the lower right. Let's add some more information about Pluto:
+the lower right. Let's add some more to our `code.py` script:
 
 ![](../fig/RStudio_screenshot_editfiles.png)
 

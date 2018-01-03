@@ -15,12 +15,12 @@ we can start using it.
 Let's create a directory for our work and then move into that directory:
 
 ~~~
-$ mkdir planets
-$ cd planets
+$ mkdir inflammation
+$ cd inflammation
 ~~~
 {: .bash}
 
-Then we tell Git to make `planets` a [repository]({{ page.root }}/reference/#repository)—a place where
+Then we tell Git to make `inflammation` a [repository]({{ page.root }}/reference/#repository)—a place where
 Git can store versions of our files:
 
 ~~~
@@ -75,23 +75,23 @@ nothing to commit (create/copy files and use "git add" to track)
 
 > ## Places to Create Git Repositories
 >
-> Dracula starts a new project, `moons`, related to his `planets` project.
-> Despite Wolfman's concerns, he enters the following sequence of commands to
+> Jane starts a new project, `infection`, related to her `inflammation` project.
+> Despite Samit's concerns, ahe enters the following sequence of commands to
 > create one Git repository inside another:
 >
 > ~~~
-> $ cd             # return to home directory
-> $ mkdir planets  # make a new directory planets
-> $ cd planets     # go into planets
-> $ git init       # make the planets directory a Git repository
-> $ mkdir moons    # make a sub-directory planets/moons
-> $ cd moons       # go into planets/moons
-> $ git init       # make the moons sub-directory a Git repository
+> $ cd                   # return to home directory
+> $ mkdir inflammation   # make a new directory inflammation
+> $ cd inflammation      # go into inflammation
+> $ git init             # make the inflammation directory a Git repository
+> $ mkdir infections     # make a sub-directory inflammation/infection
+> $ cd infection         # go into inflammation/infection
+> $ git init             # make the infection sub-directory a Git repository
 > ~~~
 > {: .bash}
 >
-> Why is it a bad idea to do this? (Notice here that the `planets` project is now also tracking the entire `moons` repository.)
-> How can Dracula undo his last `git init`?
+> Why is it a bad idea to do this? (Notice here that the `inflammation` project is now also tracking the entire `infection` repository.)
+> How can Jane undo her last `git init`?
 >
 > > ## Solution
 > >
@@ -112,19 +112,19 @@ nothing to commit (create/copy files and use "git add" to track)
 > > ~~~
 > > {: .output}
 > >
-> > Note that we can track files in directories within a Git:
+> > Note that we can track files in directories within a Git repository:
 > >
 > > ~~~
-> > $ touch moon phobos deimos titan    # create moon files
-> > $ cd ..                             # return to planets directory
-> > $ ls moons                          # list contents of the moons directory
-> > $ git add moons/*                   # add all contents of planets/moons
-> > $ git status                        # show moons files in staging area
-> > $ git commit -m "add moon files"    # commit planets/moons to planets Git repository
+> > $ touch patient1 patient2 patient3 patient4        # create infection files
+> > $ cd ..                                            # return to infection directory
+> > $ ls infection                                     # list contents of the infection directory
+> > $ git add infection/*                              # add all contents of inflammation/infection
+> > $ git status                                       # show infection files in staging area
+> > $ git commit -m "add patient files"                # commit inflammation/infection to inflammation Git repository
 > > ~~~
 > > {: .bash}
 > >
-> > Similarly, we can ignore (as discussed later) entire directories, such as the `moons` directory:
+> > Similarly, we can ignore (as discussed later) entire directories, such as the `infection` directory:
 > >
 > > ~~~
 > > $ nano .gitignore # open the .gitignore file in the text editor to add the moons directory
@@ -133,15 +133,15 @@ nothing to commit (create/copy files and use "git add" to track)
 > > {: .bash}
 > >
 > > ~~~
-> > moons
+> > infection
 > > ~~~
 > > {: .output}
 > >
-> > To recover from this little mistake, Dracula can just remove the `.git`
-> > folder in the moons subdirectory. To do so he can run the following command from inside the 'moons' directory:
+> > To recover from this little mistake, Jane can just remove the `.git`
+> > folder in the `infection` subdirectory. To do so she can run the following command from inside the `infection` directory:
 > >
 > > ~~~
-> > $ rm -rf moons/.git
+> > $ rm -rf .git
 > > ~~~
 > > {: .bash}
 > >

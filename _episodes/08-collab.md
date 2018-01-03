@@ -39,11 +39,11 @@ Next, the Collaborator needs to download a copy of the Owner's repository to her
 her `Desktop` folder, the Collaborator enters:
 
 ~~~
-$ git clone https://github.com/vlad/planets.git ~/Desktop/vlad-planets
+$ git clone https://github.com/jane/inflammation.git ~/Desktop/jane-inflammation
 ~~~
 {: .bash}
 
-Replace 'vlad' with the Owner's username.
+Replace `jane` with the correct username for your collaborator.
 
 ![After Creating Clone of Repository](../fig/github-collaboration.svg)
 
@@ -51,26 +51,27 @@ The Collaborator can now make a change in her clone of the Owner's repository,
 exactly the same way as we've been doing before:
 
 ~~~
-$ cd ~/Desktop/vlad-planets
-$ nano pluto.txt
-$ cat pluto.txt
+$ cd ~/Desktop/jane-inflammation
+$ nano code.py
+$ cat code.py
 ~~~
 {: .bash}
 
 ~~~
-It is so a planet!
+# This will be a Python script
 ~~~
 {: .output}
 
 ~~~
-$ git add pluto.txt
-$ git commit -m "Add notes about Pluto"
+$ git add code.py
+$ git commit -m "First Python analysis script"
 ~~~
 {: .bash}
 
 ~~~
- 1 file changed, 1 insertion(+)
- create mode 100644 pluto.txt
+[master 6cc98ec] First Python analysis script
+1 file changed, 2 insertions(+)
+create mode 100644 code.py
 ~~~
 {: .output}
 
@@ -82,13 +83,13 @@ $ git push origin master
 {: .bash}
 
 ~~~
-Counting objects: 4, done.
+Counting objects: 3, done.
 Delta compression using up to 4 threads.
 Compressing objects: 100% (2/2), done.
-Writing objects: 100% (3/3), 306 bytes, done.
+Writing objects: 100% (3/3), 354 bytes | 354.00 KiB/s, done.
 Total 3 (delta 0), reused 0 (delta 0)
-To https://github.com/vlad/planets.git
-   9272da5..29aba7c  master -> master
+To https://github.com/jane/inflammation.git
+   9dba5e1..6cc98ec  master -> master
 ~~~
 {: .output}
 
@@ -108,17 +109,18 @@ $ git pull origin master
 {: .bash}
 
 ~~~
-remote: Counting objects: 4, done.
+rremote: Counting objects: 3, done.
 remote: Compressing objects: 100% (2/2), done.
-remote: Total 3 (delta 0), reused 3 (delta 0)
+remote: Total 3 (delta 0), reused 3 (delta 0), pack-reused 0
 Unpacking objects: 100% (3/3), done.
-From https://github.com/vlad/planets
+From https://github.com/ARCTraining/inflammation
  * branch            master     -> FETCH_HEAD
-Updating 9272da5..29aba7c
+   9dba5e1..6cc98ec  master     -> origin/master
+Updating 9dba5e1..6cc98ec
 Fast-forward
- pluto.txt | 1 +
- 1 file changed, 1 insertion(+)
- create mode 100644 pluto.txt
+ code.py | 2 ++
+ 1 file changed, 2 insertions(+)
+ create mode 100644 code.py
 ~~~
 {: .output}
 

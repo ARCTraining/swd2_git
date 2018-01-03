@@ -22,16 +22,24 @@ of configurations we will set as we get started with Git:
 
 On a command line, Git commands are written as `git verb`,
 where `verb` is what we actually want to do. So here is how
-Dracula sets up his new laptop:
+Jane sets up her new laptop:
 
 ~~~
-$ git config --global user.name "Vlad Dracula"
-$ git config --global user.email "vlad@tran.sylvan.ia"
+$ git config --global user.name "Jane Smith"
+$ git config --global user.email "jane.smith@university.ac.uk"
 $ git config --global color.ui "auto"
 ~~~
 {: .bash}
 
-Please use your own name and email address instead of Dracula's. This user name and email will be associated with your subsequent Git activity,
+We're using a Linux 'virtual machine' today which has the command line tools for Git already installed, but Git can be used equally well on a Mac or a Windows computer:
+
+[Git setup for Mac](https://www.codecademy.com/articles/git-setup)
+[Git and Git Bash setup for Windows](https://www.codecademy.com/articles/command-line-setup)
+
+
+Please use your own name and email address instead of Jane's. Later on in this workshop, we'll be setting up an account on Github so make sure you use the **same** email address. We recommend that you use your institutional email address.
+
+This user name and email will be associated with your subsequent Git activity,
 which means that any changes pushed to
 [GitHub](https://github.com/),
 [BitBucket](https://bitbucket.org/),
@@ -41,14 +49,14 @@ in a later lesson will include this information.
 
 > ## Line Endings
 >
-> As with other keys, when you hit the 'return' key on your keyboard, 
-> your computer encodes this input. 
+> As with other keys, when you hit the 'return' key on your keyboard,
+> your computer encodes this input.
 > For reasons that are long to explain, different operating systems
-> use different character(s) to represent the end of a line. 
+> use different character(s) to represent the end of a line.
 > (You may also hear these referred to as newlines or line breaks.)
-> Because git uses these characters to compare files, 
-> it may cause unexpected issues when editing a file on different machines. 
-> 
+> Because git uses these characters to compare files,
+> it may cause unexpected issues when editing a file on different machines.
+>
 > You can change the way git recognizes and encodes line endings
 > using the `core.autocrlf` command to `git config`.
 > The following settings are recommended:
@@ -66,15 +74,15 @@ in a later lesson will include this information.
 > $ git config --global core.autocrlf true
 > ~~~
 > {: .bash}
-> 
-> You can read more about this issue 
+>
+> You can read more about this issue
 > [on this GitHub page](https://help.github.com/articles/dealing-with-line-endings/).
 {: .callout}
 
-For these lessons, we will be interacting with [GitHub](https://github.com/) and so the email address used should be the same as the one used when setting up your GitHub account. If you are concerned about privacy, please review [GitHub's instructions for keeping your email address private][git-privacy]. 
+For these lessons, we will be interacting with [GitHub](https://github.com/) and so the email address used should be the same as the one used when setting up your GitHub account. If you are concerned about privacy, please review [GitHub's instructions for keeping your email address private][git-privacy].
 If you elect to use a private email address with GitHub, then use that same email address for the `user.email` value, e.g. `username@users.noreply.github.com` replacing `username` with your GitHub one. You can change the email address later on by using the `git config` command again.
 
-Dracula also has to set his favorite text editor, following this table:
+Jane also has to set her favorite text editor, following this table:
 
 | Editor             | Configuration command                            |
 |:-------------------|:-------------------------------------------------|

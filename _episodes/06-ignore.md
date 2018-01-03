@@ -14,7 +14,7 @@ keypoints:
 What if we have files that we do not want Git to track for us,
 like backup files created by our editor
 or intermediate files created during data analysis?
-Let's create a few dummy files:
+Let's create a few dummy files in the `inflammation` directory:
 
 ~~~
 $ mkdir results
@@ -199,10 +199,10 @@ nothing to commit, working directory clean
 > Given a directory structure that looks like:
 >
 > ~~~
-> results/data/position/gps/a.data
-> results/data/position/gps/b.data
-> results/data/position/gps/c.data
-> results/data/position/gps/info.txt
+> results/data/ward/patient/a.data
+> results/data/ward/patient/b.data
+> results/data/ward/patient/c.data
+> results/data/ward/patient/info.txt
 > results/plots
 > ~~~
 > {: .bash}
@@ -212,8 +212,8 @@ nothing to commit, working directory clean
 >
 > > ## Solution
 > >
-> > Appending `results/data/position/gps/*.data` will match every file in `results/data/position/gps` that ends with `.data`.
-> > The file `results/data/position/gps/info.txt` will not be ignored.
+> > Appending `results/data/ward/patients/*.data` will match every file in `results/data/position/gps` that ends with `.data`.
+> > The file `results/data/ward/patient/info.txt` will not be ignored.
 > {: .solution}
 {: .challenge}
 
