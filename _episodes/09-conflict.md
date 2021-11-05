@@ -1,15 +1,19 @@
 ---
-title: Conflicts
+title: Conflicts and branching
 teaching: 15
 exercises: 0
 questions:
 - "What do I do when my changes conflict with someone else's?"
+- "How to I separate development work between other members of my team?"
 objectives:
 - "Explain what conflicts are and when they can occur."
 - "Resolve conflicts resulting from a merge."
+- "Explain what branches are and why we use them?"
+- "Explain the workflow for bringing changes from one branch into another"
 keypoints:
 - "Conflicts occur when two or more people change the same file(s) at the same time."
 - "The version control system does not allow people to overwrite each other's changes blindly, but highlights conflicts so that they can be resolved."
+- "Branches allow you to create a separate line of development on your code which allows for prototyping without changing your main development line"
 ---
 
 As soon as people can work in parallel, they'll likely step on each other's
@@ -286,7 +290,7 @@ $ git pull origin main
 {: .bash}
 
 ~~~
-rremote: Counting objects: 7, done.
+remote: Counting objects: 7, done.
 remote: Compressing objects: 100% (3/3), done.
 remote: Total 7 (delta 4), reused 7 (delta 4), pack-reused 0
 Unpacking objects: 100% (7/7), done.
@@ -526,6 +530,42 @@ hint: See the 'Note about fast-forwards' in 'git push --help' for details.
 > {: .solution}
 {: .challenge}
 
+## Branching
+
+One approach for managing multiple users working on the same code base is to use git's branching feature. 
+Branching is a version control concept that means you can create separate lines of development derived from your main line.
+This allows you to make changes to the code, adding functionality or making improvements without messing up your original main code.
+When working in a team this means you can separate each team members development work allowing them to work on their problem in
+isolation. 
+
+Changes in one branch can be brought into another (such as back into the main branch) through merging but by separating work
+between branches this merge step becomes a specific end point that we work too at which conflicts are resolved rather than 
+continuously managing conflicts when everyone works on the same branch.
+
+To see what branches are available in your local repository you can type `git branch`
+
+~~~
+$ git branch
+~~~
+{: .bash}
+
+~~~
+* main
+~~~
+{: .output}
+
+The `main` branch is created when the repository is initialised. You can create new branches by using the `git branch` command followed by the name of the branch you want to create. Let's create a new `experimental` branch.
+
+~~~
+$ git branch experimental
+~~~
+{: .bash}
+
+~~~
+  experimental
+* main
+~~~
+{: .output}
 > ## A Typical Work Session
 >
 > You sit down at your computer to work on a shared project that is tracked in a
