@@ -566,6 +566,123 @@ $ git branch experimental
 * main
 ~~~
 {: .output}
+
+The asterisk symbol indicates which branch we are currently on (or in git-speak which branch we have checked out).
+
+We can switch to a different branch by using the `git checkout` command.
+
+~~~
+$ git checkout experimental
+$ git branch
+~~~
+{: .bash}
+
+~~~
+Switched to branch 'experimental'
+
+* experimental
+  main
+~~~
+{: .output}
+
+Let's work through the conflict-causing example but this time using branches. Open the `project.txt` file with a text editor and make
+some changes whilst we're on the `experimental` branch.
+
+~~~
+$ nano project.txt
+$ cat project.txt
+~~~
+{: .bash}
+
+~~~
+Some initial data analysis to identify how inflammation changes over time after surgery.
+Jane is a Data Scientist and Samit is a statistician. We'll need to determine
+who is responsible for what in this project.
+We may need to bring a third person with Python programming skills into the project.
+The third team member needs to be competent in both Python and R. They
+also need to be familiar with matplotlib and ggplot
+Add a different line to the originator's copy
+This line added to the collaborator's copy
+Here we're making some _experimental_ changes
+~~~
+{: .output}
+
+Let's now commit this change and push this branch up to GitHub
+
+~~~
+$ git add project.txt
+$ git commit -m 'adding experimental changes'
+$ git push -u origin experimental
+~~~
+{: .bash}
+
+~~~
+[experimental c5d6cba] Breaking updates about Pluto
+ 1 file changed, 1 insertion(+)
+
+Counting objects: 5, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 307 bytes, done.
+Total 3 (delta 2), reused 0 (delta 0)
+To https://github.com/jane/inflammation.git
+ * [new branch]      experimental -> experimental
+~~~
+{: .output}
+
+Here we've used `git push -u` to specify the upstream remote repository `origin` and pushes changes from our local branch
+`experimental` to a branch called `experimental` on the remote (in the first instance this will create a new branch on the remote).
+
+Let's do a `git status` to check where we are currently on this branch.
+
+~~~
+$ git status
+~~~
+{: .bash}
+
+~~~
+On branch experimental
+nothing to commit, working directory clean
+~~~
+{: .output}
+
+Here we can see we're still on the `experimental` branch and that everything is up to date. 
+Let's switch back to the `main` branch and check the original version of `project.txt` doesn't include our experimental changes.
+
+~~~
+$ git checkout main
+~~~
+{: .bash}
+
+~~~
+Switched to branch 'main'
+~~~
+{: .output}
+
+~~~
+$ cat project.txt
+~~~
+{: .bash}
+
+~~~
+Some initial data analysis to identify how inflammation changes over time after surgery.
+Jane is a Data Scientist and Samit is a statistician. We'll need to determine
+who is responsible for what in this project.
+We may need to bring a third person with Python programming skills into the project.
+The third team member needs to be competent in both Python and R. They
+also need to be familiar with matplotlib and ggplot
+Add a different line to the originator's copy
+This line added to the collaborator's copy
+~~~
+{: .output}
+
+On the `main` branch out `project.txt` file has remained unchanged. This shows the real power of branches, we can 
+create experimental copies of our main code without impacting the original code and all within our existing repository!
+
+If we're happy with the changes made in the `experimental` branch we can look at merging them back into the `main` branch. 
+We can do this using `git merge` as shown below but we'll look at how we do this through GitHub.
+
+
 > ## A Typical Work Session
 >
 > You sit down at your computer to work on a shared project that is tracked in a
