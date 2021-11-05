@@ -24,7 +24,7 @@ on the web rather than on someone's laptop.
 
 Most programmers use hosting
 services like [GitHub](https://github.com), [BitBucket](https://bitbucket.org) or
-[GitLab](https://gitlab.com/) to hold those master copies; we'll explore the pros
+[GitLab](https://gitlab.com/) to hold those main copies; we'll explore the pros
 and cons of this in the final section of this lesson.
 
 Let's start by sharing the changes we've made to our current project with the
@@ -109,7 +109,7 @@ Once the nickname `origin` is set up, this command will push the changes from
 our local repository to the repository on GitHub:
 
 ~~~
-$ git push origin master
+$ git push origin main
 ~~~
 {: .bash}
 
@@ -121,7 +121,7 @@ Writing objects: 100% (16/16), 1.62 KiB | 1.62 MiB/s, done.
 Total 16 (delta 4), reused 0 (delta 0)
 remote: Resolving deltas: 100% (4/4), done.
 To https://github.com/ARCTraining/inflammation.git
- * [new branch]      master -> master
+ * [new branch]      main -> main
 ~~~
 {: .output}
 
@@ -180,19 +180,19 @@ Our local and remote repositories are now in this state:
 > option is synonymous with the `--set-upstream-to` option for the `git branch`
 > command, and is used to associate the current branch with a remote branch so
 > that the `git pull` command can be used without any arguments. To do this,
-> simply use `git push -u origin master` once the remote has been set up.
+> simply use `git push -u origin main` once the remote has been set up.
 {: .callout}
 
 We can pull changes from the remote repository to the local one as well:
 
 ~~~
-$ git pull origin master
+$ git pull origin main
 ~~~
 {: .bash}
 
 ~~~
 From https://github.com/ARCTraining/inflammation
- * branch            master     -> FETCH_HEAD
+ * branch            main     -> FETCH_HEAD
 Already up-to-date.
 
 ~~~

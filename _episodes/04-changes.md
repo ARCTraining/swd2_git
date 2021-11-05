@@ -81,7 +81,7 @@ $ git status
 {: .bash}
 
 ~~~
-On branch master
+On branch main
 
 Initial commit
 
@@ -111,7 +111,7 @@ $ git status
 {: .bash}
 
 ~~~
-On branch master
+On branch main
 
 Initial commit
 
@@ -134,7 +134,7 @@ $ git commit -m "Start notes on the patient inflammation project"
 {: .bash}
 
 ~~~
-[[master (root-commit) 40b8a94] Start notes on the patient inflammation project
+[[main (root-commit) 40b8a94] Start notes on the patient inflammation project
  1 file changed, 1 insertion(+)
  create mode 100644 project.txt
 
@@ -166,7 +166,7 @@ $ git status
 {: .bash}
 
 ~~~
-On branch master
+On branch main
 nothing to commit, working tree clean
 
 ~~~
@@ -182,7 +182,7 @@ $ git log
 {: .bash}
 
 ~~~
-commit 40b8a9400329ed7324116cc9392dc8e4842d8501 (HEAD -> master)
+commit 40b8a9400329ed7324116cc9392dc8e4842d8501 (HEAD -> main)
 Author: Jane Smith <jane.smith@university.ac.uk>
 Date:   Wed Jan 3 10:34:07 2018 +0000
 
@@ -235,7 +235,7 @@ $ git status
 {: .bash}
 
 ~~~
-On branch master
+On branch main
 Changes not staged for commit:
   (use "git add <file>..." to update what will be committed)
   (use "git checkout -- <file>..." to discard changes in working directory)
@@ -299,7 +299,7 @@ $ git status
 {: .bash}
 
 ~~~
-On branch master
+On branch main
 Changes not staged for commit:
   (use "git add <file>..." to update what will be committed)
   (use "git checkout -- <file>..." to discard changes in working directory)
@@ -321,7 +321,7 @@ $ git commit -m "Add note about project responsibilities"
 {: .bash}
 
 ~~~
-[master 71ed26a] Add note about project responsibilities
+[main 71ed26a] Add note about project responsibilities
  1 file changed, 2 insertions(+)
 
 ~~~
@@ -452,7 +452,7 @@ $ git commit -m "Add note about extra team members"
 {: .bash}
 
 ~~~
-[master 005937f] Add note about extra team members
+[main 005937f] Add note about extra team members
  1 file changed, 1 insertion(+)
 ~~~
 {: .output}
@@ -465,7 +465,7 @@ $ git status
 {: .bash}
 
 ~~~
-On branch master
+On branch main
 nothing to commit, working directory clean
 ~~~
 {: .output}
@@ -478,7 +478,7 @@ $ git log
 {: .bash}
 
 ~~~
-commit 63f6bc6039c12ce897cf3f02bda1e95fd30fef58 (HEAD -> master)
+commit 63f6bc6039c12ce897cf3f02bda1e95fd30fef58 (HEAD -> main)
 Author: Jane Smith <jane.smith@university.ac.uk>
 Date:   Wed Jan 3 10:42:09 2018 +0000
 
@@ -532,7 +532,7 @@ Date:   Wed Jan 3 10:34:07 2018 +0000
 > {: .bash}
 >
 > ~~~
-> commit 63f6bc6039c12ce897cf3f02bda1e95fd30fef58 (HEAD -> master)
+> commit 63f6bc6039c12ce897cf3f02bda1e95fd30fef58 (HEAD -> main)
 > Author: Jane Smith <jane.smith@university.ac.uk>
 > Date:   Wed Jan 3 10:42:09 2018 +0000
 >
@@ -548,7 +548,7 @@ Date:   Wed Jan 3 10:34:07 2018 +0000
 > ~~~
 > {: .bash}
 > ~~~
-> 63f6bc6 (HEAD -> master) Add note about extra team members
+> 63f6bc6 (HEAD -> main) Add note about extra team members
 > 71ed26a Add note about project responsibilities
 > 40b8a94 Start notes on the patient inflammation project
 > ~~~
@@ -562,7 +562,7 @@ Date:   Wed Jan 3 10:34:07 2018 +0000
 > ~~~
 > {: .bash}
 > ~~~
-> * 63f6bc6 (HEAD -> master) Add note about extra team members
+> * 63f6bc6 (HEAD -> main) Add note about extra team members
 > * 71ed26a Add note about project responsibilities
 > * 40b8a94 Start notes on the patient inflammation project
 > ~~~
@@ -701,7 +701,7 @@ repository (`git commit`):
 > > ~~~
 > > {: .bash}
 > > ~~~
-> > [master a264d5c] Add note about what data would be useful
+> > [main a264d5c] Add note about what data would be useful
 > > 2 files changed, 3 insertions(+)
 > > create mode 100644 analysis.txt
 > > ~~~
@@ -741,7 +741,7 @@ repository (`git commit`):
 > > ~~~
 > > {: .bash}
 > > ~~~
-> > [master 4162a51] Update Jane's bio.
+> > [main 4162a51] Update Jane's bio.
 > > Author: Pete Jones <pete.jones@university.ac.uk>
 > > 1 file changed, 2 insertions(+), 2 deletions(-)
 > >

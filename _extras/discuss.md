@@ -242,7 +242,7 @@ $ git status
 {: .bash}
 
 ~~~
-On branch master
+On branch main
 nothing to commit, working directory clean
 ~~~
 {: .output}
@@ -257,7 +257,7 @@ $ git status
 {: .bash}
 
 ~~~
-On branch master
+On branch main
 Changes to be committed:
    (use "git reset HEAD <file>..." to unstage)
 
@@ -299,7 +299,7 @@ $ git status
 {: .bash}
 
 ~~~
-On branch master
+On branch main
 Changes not staged for commit:
    (use "git add/rm <file>..." to update what will be committed)
    (use "git checkout -- <file>..." to discard changes in working directory)
@@ -322,7 +322,7 @@ $ git status
 {: .bash}
 
 ~~~
-On branch master
+On branch main
 Changes to be committed:
    (use "git reset HEAD <file>..." to unstage)
 
@@ -370,7 +370,7 @@ $ git status
 {: .bash}
 
 ~~~
-# On branch master
+# On branch main
 # Changes to be committed:
 #   (use "git reset HEAD <file>..." to unstage)
 #
@@ -409,7 +409,7 @@ $ git status
 {: .bash}
 
 ~~~
-On branch master
+On branch main
 Changes not staged for commit:
   (use "git add/rm <file>..." to update what will be committed)
   (use "git checkout -- <file>..." to discard changes in working directory)
@@ -437,7 +437,7 @@ $ git status
 {: .bash}
 
 ~~~
-On branch master
+On branch main
 Changes to be committed:
   (use "git reset HEAD <file>..." to unstage)
 
