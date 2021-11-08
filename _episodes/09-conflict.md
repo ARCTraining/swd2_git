@@ -682,6 +682,31 @@ create experimental copies of our main code without impacting the original code 
 If we're happy with the changes made in the `experimental` branch we can look at merging them back into the `main` branch. 
 We can do this using `git merge` as shown below but we'll look at how we do this through GitHub.
 
+### Pull Requests 
+
+When we push a branch to a repository in GitHub and visit the repository GitHub will suggest we `Compare & Pull Request`.
+This is a GitHub workflow process that mimics the `git merge` operation but with some additional steps to encourage us to
+review code before merging.
+
+If we click `Compare & Pull Request` it takes us to a new page for opening a pull request.
+
+![](../fig/github-pr-suggest.png)
+
+A pull request a process between two developers where one makes some changes and makes a request to the owner of a repository
+to "pull" their new code into the original repository. It allows the owner of the repository to review the suggested changes and 
+make additional suggestions
+
+![](../fig/github-pr-open.png)
+
+![](../fig/github-pr-open02.png)
+
+![](../fig/github-pr-open03.png)
+
+![](../fig/github-pr-open04.png)
+
+![](../fig/github-pr-closed.png)
+
+![](../fig/github-pr-final.png)
 
 > ## A Typical Work Session
 >
