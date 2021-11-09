@@ -692,22 +692,47 @@ If we click `Compare & Pull Request` it takes us to a new page for opening a pul
 
 ![](../fig/github-pr-suggest.png)
 
+
 A pull request a process between two developers where one makes some changes and makes a request to the owner of a repository
 to "pull" their new code into the original repository. It allows the owner of the repository to review the suggested changes and 
-make additional suggestions
+make additional suggestions, reject or accept the proposed changes.
+
+When opening a pull request via GitHub it's important to give it a meaningful title (by default github will use the branch name 
+you are merging from). We are also able to add longer message that we should use to outline the changes made and what sort of 
+feedback we're expecting. [GitHub have a good guide on what makes a good pull request](https://github.blog/2015-01-21-how-to-write-the-perfect-pull-request/) for more thoughts. 
 
 ![](../fig/github-pr-open.png)
 
+Once we've opened a pull request it's available for everyone to see (on public repos that really is everyone!). 
+When viewing a pull request we can see the description and title along with the pull request number (#1 in this case). 
+We can also see the commits that are included which we can view in more detail using the various tabs 
+(in particular the `Files changed` tab). The `Conversations` tab also shows the exchanges between the pull request 
+suggester and the owner of the repository and others.
+
 ![](../fig/github-pr-open02.png)
+
+In this example of suggesting a pull request on a repository we own then we also have the ability to approve the pull request and merge it. You can find this option and confirmation of any checks (i.e. if any conflicts have been detected) by scrolling to the bottom of the `Conversations` tab.
 
 ![](../fig/github-pr-open03.png)
 
-![](../fig/github-pr-open04.png)
+When a pull request is merged the state of the pull request changes from `open` to `merged` and is considered `closed`.
+GitHub suggests we delete the merged branch which will delete the branch on GitHub but not locally.
 
 ![](../fig/github-pr-closed.png)
 
+
+
 ![](../fig/github-pr-final.png)
 
+> ## Open a pull request and write a good title and description
+>
+> Clone the repository created by your instructor.
+> Add a new file to it,
+> and modify an existing file (your instructor will tell you which one).
+> When asked by your instructor,
+> pull her changes from the repository to create a conflict,
+> then resolve it.
+{: .challenge}
 > ## A Typical Work Session
 >
 > You sit down at your computer to work on a shared project that is tracked in a
