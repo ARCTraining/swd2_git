@@ -716,23 +716,58 @@ In this example of suggesting a pull request on a repository we own then we also
 ![](../fig/github-pr-open03.png)
 
 When a pull request is merged the state of the pull request changes from `open` to `merged` and is considered `closed`.
-GitHub suggests we delete the merged branch which will delete the branch on GitHub but not locally.
+GitHub suggests we delete the merged branch which will delete the branch on GitHub but not locally. 
+It is also possible to close pull requests without merging, which can be the case when changes are 
+rejected or more work has been suggested.
 
 ![](../fig/github-pr-closed.png)
 
 
+Now when we navigate back to the root of the repository we can see the commits from our 
+`experimental` branch have been merged and a merge commit has also been created.
+
 
 ![](../fig/github-pr-final.png)
 
-> ## Open a pull request and write a good title and description
->
-> Clone the repository created by your instructor.
-> Add a new file to it,
-> and modify an existing file (your instructor will tell you which one).
-> When asked by your instructor,
-> pull her changes from the repository to create a conflict,
-> then resolve it.
-{: .challenge}
+
+If we're happy that we don't need the branch anymore and have deleted it on GitHub we can also delete
+ it locally using the command `git branch -d`.
+
+~~~
+$ git branch -d experimental
+~~~
+{: .bash}
+
+~~~
+Deleted branch experimental (was c5d6cba).
+~~~
+{: .output}
+
+We also need to pull down the merged changes from the pull request onto our local `main` branch.
+We can do this just using `git pull` with the `main` branch checked out.
+
+~~~
+$ git checkout main
+$ git pull
+~~~
+{: .bash}
+
+~~~
+Switched to branch 'main'
+remote: Enumerating objects: 6, done.
+remote: Counting objects: 100% (6/6), done.
+remote: Compressing objects: 100% (4/4), done.
+remote: Total 4 (delta 2), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (4/4), done.
+From github.com:Sparrow0hawk/inflammation
+   e8dd8ff..252256f  main                 -> origin/main
+Updating e8dd8ff..252256f
+Fast-forward
+ project.txt | 1 +
+ 1 file changed, 1 insertion(+)
+~~~
+{: .output}
+
 > ## A Typical Work Session
 >
 > You sit down at your computer to work on a shared project that is tracked in a
