@@ -69,7 +69,7 @@ $ git commit -m "First Python analysis script"
 {: .bash}
 
 ~~~
-[master 6cc98ec] First Python analysis script
+[main 6cc98ec] First Python analysis script
 1 file changed, 2 insertions(+)
 create mode 100644 code.py
 ~~~
@@ -78,7 +78,7 @@ create mode 100644 code.py
 Then push the change to the *Owner's repository* on GitHub:
 
 ~~~
-$ git push origin master
+$ git push origin main
 ~~~
 {: .bash}
 
@@ -89,7 +89,7 @@ Compressing objects: 100% (2/2), done.
 Writing objects: 100% (3/3), 354 bytes | 354.00 KiB/s, done.
 Total 3 (delta 0), reused 0 (delta 0)
 To https://github.com/jane/inflammation.git
-   9dba5e1..6cc98ec  master -> master
+   9dba5e1..6cc98ec  main -> main
 ~~~
 {: .output}
 
@@ -104,7 +104,7 @@ Collaborator.
 To download the Collaborator's changes from GitHub, the Owner now enters:
 
 ~~~
-$ git pull origin master
+$ git pull origin main
 ~~~
 {: .bash}
 
@@ -114,8 +114,8 @@ remote: Compressing objects: 100% (2/2), done.
 remote: Total 3 (delta 0), reused 3 (delta 0), pack-reused 0
 Unpacking objects: 100% (3/3), done.
 From https://github.com/ARCTraining/inflammation
- * branch            master     -> FETCH_HEAD
-   9dba5e1..6cc98ec  master     -> origin/master
+ * branch            main     -> FETCH_HEAD
+   9dba5e1..6cc98ec  main     -> origin/main
 Updating 9dba5e1..6cc98ec
 Fast-forward
  code.py | 2 ++
@@ -133,10 +133,10 @@ GitHub) are back in sync.
 > repository you are collaborating on, so you should `git pull` before making
 > our changes. The basic collaborative workflow would be:
 >
-> * update your local repo with `git pull origin master`,
+> * update your local repo with `git pull origin main`,
 > * make your changes and stage them with `git add`,
 > * commit your changes with `git commit -m`, and
-> * upload the changes to GitHub with `git push origin master`
+> * upload the changes to GitHub with `git push origin main`
 >
 > It is better to make many commits with smaller changes rather than
 > of one commit with massive changes: small commits are easier to
@@ -155,14 +155,14 @@ GitHub) are back in sync.
 > command line? And on GitHub?
 >
 > > ## Solution
-> > On the command line, the Collaborator can use ```git fetch origin master```
+> > On the command line, the Collaborator can use ```git fetch origin main```
 > > to get the remote changes into the local repository, but without merging
-> > them. Then by running ```git diff master origin/master``` the Collaborator
+> > them. Then by running ```git diff main origin/main``` the Collaborator
 > > will see the changes output in the terminal.
 > >
 > > On GitHub, the Collaborator can go to their own fork of the repository and
 > > look right above the light blue latest commit bar for a gray bar saying
-> > "This branch is 1 commit behind Our-Repository:master." On the far right of
+> > "This branch is 1 commit behind Our-Repository:main." On the far right of
 > > that gray bar is a Compare icon and link. On the Compare page the
 > > Collaborator should change the base fork to their own repository, then click
 > > the link in the paragraph above to "compare across forks", and finally

@@ -67,13 +67,13 @@ $ git commit -m "Add a line to the collaborator copy"
 {: .bash}
 
 ~~~
-[master f4915d6] Add a line to the collaborator copy
+[main f4915d6] Add a line to the collaborator copy
  1 file changed, 1 insertion(+)
 ~~~
 {: .output}
 
 ~~~
-$ git push origin master
+$ git push origin main
 ~~~
 {: .bash}
 
@@ -85,7 +85,7 @@ Writing objects: 100% (3/3), 333 bytes | 333.00 KiB/s, done.
 Total 3 (delta 2), reused 0 (delta 0)
 remote: Resolving deltas: 100% (2/2), completed with 2 local objects.
 To https://github.com/ARCTraining/inflammation.git
-   6cc98ec..f4915d6  master -> master
+   6cc98ec..f4915d6  main -> main
 ~~~
 {: .output}
 
@@ -119,7 +119,7 @@ $ git commit -m "Add a line in the originator's copy"
 {: .bash}
 
 ~~~
-[master ef10d89] Add a line in the originator's copy
+[main ef10d89] Add a line in the originator's copy
  1 file changed, 1 insertion(+)
 ~~~
 {: .output}
@@ -127,13 +127,13 @@ $ git commit -m "Add a line in the originator's copy"
 but Git won't let us push it to GitHub:
 
 ~~~
-$ git push origin master
+$ git push origin main
 ~~~
 {: .bash}
 
 ~~~
 To https://github.com/jane/inflammation.git
- ! [rejected]        master -> master (fetch first)
+ ! [rejected]        main -> main (fetch first)
 error: failed to push some refs to 'https://github.com/jane/inflammation.git'
 hint: Updates were rejected because the remote contains work that you do
 hint: not have locally. This is usually caused by another repository pushing
@@ -153,7 +153,7 @@ and then push that.
 Let's start by pulling:
 
 ~~~
-$ git pull origin master
+$ git pull origin main
 ~~~
 {: .bash}
 
@@ -163,8 +163,8 @@ remote: Compressing objects: 100% (1/1), done.
 remote: Total 3 (delta 2), reused 3 (delta 2), pack-reused 0
 Unpacking objects: 100% (3/3), done.
 From https://github.com/jane/inflammation
- * branch            master     -> FETCH_HEAD
-   6cc98ec..f4915d6  master     -> origin/master
+ * branch            main     -> FETCH_HEAD
+   6cc98ec..f4915d6  main     -> origin/main
 Auto-merging project.txt
 CONFLICT (content): Merge conflict in project.txt
 Automatic merge failed; fix conflicts and then commit the result.
@@ -236,7 +236,7 @@ $ git status
 {: .bash}
 
 ~~~
-On branch master
+On branch main
 All conflicts fixed but you are still merging.
   (use "git commit" to conclude merge)
 
@@ -253,14 +253,14 @@ $ git commit -m "Merge changes from GitHub"
 {: .bash}
 
 ~~~
-[master 2abf2b1] Merge changes from GitHub
+[main 2abf2b1] Merge changes from GitHub
 ~~~
 {: .output}
 
 Now we can push our changes to GitHub:
 
 ~~~
-$ git push origin master
+$ git push origin main
 ~~~
 {: .bash}
 
@@ -272,7 +272,7 @@ Writing objects: 100% (7/7), 755 bytes | 755.00 KiB/s, done.
 Total 7 (delta 4), reused 0 (delta 0)
 remote: Resolving deltas: 100% (4/4), completed with 3 local objects.
 To https://github.com/jane/inflammation.git
-   f4915d6..dc29981  master -> master
+   f4915d6..dc29981  main -> main
 ~~~
 {: .output}
 
@@ -281,7 +281,7 @@ so we don't have to fix things by hand again
 when the collaborator who made the first change pulls again:
 
 ~~~
-$ git pull origin master
+$ git pull origin main
 ~~~
 {: .bash}
 
@@ -291,8 +291,8 @@ remote: Compressing objects: 100% (3/3), done.
 remote: Total 7 (delta 4), reused 7 (delta 4), pack-reused 0
 Unpacking objects: 100% (7/7), done.
 From https://github.com/jane/inflammation
- * branch            master     -> FETCH_HEAD
-   f4915d6..dc29981  master     -> origin/master
+ * branch            main     -> FETCH_HEAD
+   f4915d6..dc29981  main     -> origin/main
 Updating f4915d6..dc29981
 Fast-forward
  analysis.txt | 1 +
@@ -327,7 +327,7 @@ correctly. If you find yourself resolving a lot of conflicts in a project,
 consider these technical approaches to reducing them:
 
 - Pull from upstream more frequently, especially before starting new work
-- Use topic branches to segregate work, merging to master when complete
+- Use topic branches to segregate work, merging to main when complete
 - Make smaller more atomic commits
 - Where logically appropriate, break large files into smaller ones so that it is
   less likely that two authors will alter the same file simultaneously
@@ -392,7 +392,7 @@ Conflicts can also be minimized with project management strategies:
 > > {: .bash}
 > >
 > > ~~~
-> > [master c769bc5] Add a chart image
+> > [main c769bc5] Add a chart image
 > > 1 file changed, 0 insertions(+), 0 deletions(-)
 > > create mode 100644 chart1.jpg
 > > ~~~
@@ -405,13 +405,13 @@ Conflicts can also be minimized with project management strategies:
 > > When Jane tries to push, she gets a familiar message:
 > >
 > > ~~~
-> > $ git push origin master
+> > $ git push origin main
 > > ~~~
 > > {: .bash}
 > >
 > > ~~~
 To https://github.com/jane/inflammation.git
- ! [rejected]        master -> master (fetch first)
+ ! [rejected]        main -> main (fetch first)
 error: failed to push some refs to 'https://github.com/jane/inflammation.git'
 hint: Updates were rejected because the remote contains work that you do
 hint: not have locally. This is usually caused by another repository pushing
@@ -424,7 +424,7 @@ hint: See the 'Note about fast-forwards' in 'git push --help' for details.
 > > We've learned that we must pull first and resolve any conflicts:
 > >
 > > ~~~
-> > $ git pull origin master
+> > $ git pull origin main
 > > ~~~
 > > {: .bash}
 > >
@@ -432,14 +432,14 @@ hint: See the 'Note about fast-forwards' in 'git push --help' for details.
 > > a message like this:
 > >
 > > ~~~
-> > $ git pull origin master
+> > $ git pull origin main
 > > remote: Counting objects: 3, done.
 > > remote: Compressing objects: 100% (3/3), done.
 > > remote: Total 3 (delta 0), reused 3 (delta 0), pack-reused 0
 > > Unpacking objects: 100% (3/3), done.
 > > From https://github.com/ARCTraining/inflammation
-> >  * branch            master     -> FETCH_HEAD
-> >   dc29981..c769bc5  master     -> origin/master
+> >  * branch            main     -> FETCH_HEAD
+> >   dc29981..c769bc5  main     -> origin/main
 > > warning: Cannot merge binary files: chart1.jpg (HEAD vs. c769bc59aa612198cf77ac01a9e8f8479d7940ea)
 > > Auto-merging chart1.jpg
 > > CONFLICT (add/add): Merge conflict in chart1.jpg
@@ -471,7 +471,7 @@ hint: See the 'Note about fast-forwards' in 'git push --help' for details.
 > > {: .bash}
 > >
 > > ~~~
-> > [master 860c242] Use the greyscale image instead of the colour one
+> > [main 860c242] Use the greyscale image instead of the colour one
 > > ~~~
 > > {: .output}
 > >
@@ -486,7 +486,7 @@ hint: See the 'Note about fast-forwards' in 'git push --help' for details.
 > > {: .bash}
 > >
 > > ~~~
-> > [master da21b34] Use the colour image instead of the greyscale one
+> > [main da21b34] Use the colour image instead of the greyscale one
 > > ~~~
 > > {: .output}
 > >
@@ -514,7 +514,7 @@ hint: See the 'Note about fast-forwards' in 'git push --help' for details.
 > > {: .bash}
 > >
 > > ~~~
-> >[master 6aa1183] Use two images: grey and colour
+> >[main 6aa1183] Use two images: grey and colour
 > > 2 files changed, 0 insertions(+), 0 deletions(-)
 > > create mode 100644 chart1-colour.jpg
 > > rename chart1.jpg => chart1-grey.jpg (100%)
@@ -558,11 +558,11 @@ hint: See the 'Note about fast-forwards' in 'git push --help' for details.
 > >
 > > |order|action . . . . . . |command . . . . . . . . . . . . . . . . . . . |
 > > |-----|-------------------|----------------------------------------------|
-> > |1    | Update local      | `git pull origin master`                     |
+> > |1    | Update local      | `git pull origin main`                     |
 > > |2    | Make changes      | `echo 100 >> numbers.txt`                    |
 > > |3    | Stage changes     | `git add numbers.txt`                        |
 > > |4    | Commit changes    | `git commit -m "Add 100 to numbers.txt"`     |
-> > |5    | Update remote     | `git push origin master`                     |
+> > |5    | Update remote     | `git push origin main`                     |
 > > |6    | Celebrate!        | `AFK`                                        |
 > >
 > {: .solution}
