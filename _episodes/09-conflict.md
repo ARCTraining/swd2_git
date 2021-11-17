@@ -1,15 +1,19 @@
 ---
-title: Conflicts
+title: Conflicts and branching
 teaching: 15
 exercises: 0
 questions:
 - "What do I do when my changes conflict with someone else's?"
+- "How to I separate development work between other members of my team?"
 objectives:
 - "Explain what conflicts are and when they can occur."
 - "Resolve conflicts resulting from a merge."
+- "Explain what branches are and why we use them?"
+- "Explain the workflow for bringing changes from one branch into another"
 keypoints:
 - "Conflicts occur when two or more people change the same file(s) at the same time."
 - "The version control system does not allow people to overwrite each other's changes blindly, but highlights conflicts so that they can be resolved."
+- "Branches allow you to create a separate line of development on your code which allows for prototyping without changing your main development line"
 ---
 
 As soon as people can work in parallel, they'll likely step on each other's
@@ -286,7 +290,7 @@ $ git pull origin main
 {: .bash}
 
 ~~~
-rremote: Counting objects: 7, done.
+remote: Counting objects: 7, done.
 remote: Compressing objects: 100% (3/3), done.
 remote: Total 7 (delta 4), reused 7 (delta 4), pack-reused 0
 Unpacking objects: 100% (7/7), done.
@@ -525,6 +529,244 @@ hint: See the 'Note about fast-forwards' in 'git push --help' for details.
 > > no longer exists.
 > {: .solution}
 {: .challenge}
+
+## Branching
+
+One approach for managing multiple users working on the same code base is to use git's branching feature. 
+Branching is a version control concept that means you can create separate lines of development derived from your main line.
+This allows you to make changes to the code, adding functionality or making improvements without messing up your original main code.
+When working in a team this means you can separate each team members development work allowing them to work on their problem in
+isolation. 
+
+Changes in one branch can be brought into another (such as back into the main branch) through merging but by separating work
+between branches this merge step becomes a specific end point that we work too at which conflicts are resolved rather than 
+continuously managing conflicts when everyone works on the same branch.
+
+To see what branches are available in your local repository you can type `git branch`
+
+~~~
+$ git branch
+~~~
+{: .bash}
+
+~~~
+* main
+~~~
+{: .output}
+
+The `main` branch is created when the repository is initialised. You can create new branches by using the `git branch` command followed by the name of the branch you want to create. Let's create a new `experimental` branch.
+
+~~~
+$ git branch experimental
+~~~
+{: .bash}
+
+~~~
+  experimental
+* main
+~~~
+{: .output}
+
+The asterisk symbol indicates which branch we are currently on (or in git-speak which branch we have checked out).
+
+We can switch to a different branch by using the `git checkout` command.
+
+~~~
+$ git checkout experimental
+$ git branch
+~~~
+{: .bash}
+
+~~~
+Switched to branch 'experimental'
+
+* experimental
+  main
+~~~
+{: .output}
+
+Let's work through the conflict-causing example but this time using branches. Open the `project.txt` file with a text editor and make
+some changes whilst we're on the `experimental` branch.
+
+~~~
+$ nano project.txt
+$ cat project.txt
+~~~
+{: .bash}
+
+~~~
+Some initial data analysis to identify how inflammation changes over time after surgery.
+Jane is a Data Scientist and Samit is a statistician. We'll need to determine
+who is responsible for what in this project.
+We may need to bring a third person with Python programming skills into the project.
+The third team member needs to be competent in both Python and R. They
+also need to be familiar with matplotlib and ggplot
+Add a different line to the originator's copy
+This line added to the collaborator's copy
+Here we're making some _experimental_ changes
+~~~
+{: .output}
+
+Let's now commit this change and push this branch up to GitHub
+
+~~~
+$ git add project.txt
+$ git commit -m 'adding experimental changes'
+$ git push -u origin experimental
+~~~
+{: .bash}
+
+~~~
+[experimental c5d6cba] Breaking updates about Pluto
+ 1 file changed, 1 insertion(+)
+
+Counting objects: 5, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 307 bytes, done.
+Total 3 (delta 2), reused 0 (delta 0)
+To https://github.com/jane/inflammation.git
+ * [new branch]      experimental -> experimental
+~~~
+{: .output}
+
+Here we've used `git push -u` to specify the upstream remote repository `origin` and pushes changes from our local branch
+`experimental` to a branch called `experimental` on the remote (in the first instance this will create a new branch on the remote).
+
+Let's do a `git status` to check where we are currently on this branch.
+
+~~~
+$ git status
+~~~
+{: .bash}
+
+~~~
+On branch experimental
+nothing to commit, working directory clean
+~~~
+{: .output}
+
+Here we can see we're still on the `experimental` branch and that everything is up to date. 
+Let's switch back to the `main` branch and check the original version of `project.txt` doesn't include our experimental changes.
+
+~~~
+$ git checkout main
+~~~
+{: .bash}
+
+~~~
+Switched to branch 'main'
+~~~
+{: .output}
+
+~~~
+$ cat project.txt
+~~~
+{: .bash}
+
+~~~
+Some initial data analysis to identify how inflammation changes over time after surgery.
+Jane is a Data Scientist and Samit is a statistician. We'll need to determine
+who is responsible for what in this project.
+We may need to bring a third person with Python programming skills into the project.
+The third team member needs to be competent in both Python and R. They
+also need to be familiar with matplotlib and ggplot
+Add a different line to the originator's copy
+This line added to the collaborator's copy
+~~~
+{: .output}
+
+On the `main` branch out `project.txt` file has remained unchanged. This shows the real power of branches, we can 
+create experimental copies of our main code without impacting the original code and all within our existing repository!
+
+If we're happy with the changes made in the `experimental` branch we can look at merging them back into the `main` branch. 
+We can do this using `git merge` as shown below but we'll look at how we do this through GitHub.
+
+### Pull Requests 
+
+When we push a branch to a repository in GitHub and visit the repository GitHub will suggest we `Compare & Pull Request`.
+This is a GitHub workflow process that mimics the `git merge` operation but with some additional steps to encourage us to
+review code before merging.
+
+If we click `Compare & Pull Request` it takes us to a new page for opening a pull request.
+
+![](../fig/github-pr-suggest.png)
+
+
+A pull request a process between two developers where one makes some changes and makes a request to the owner of a repository
+to "pull" their new code into the original repository. It allows the owner of the repository to review the suggested changes and 
+make additional suggestions, reject or accept the proposed changes.
+
+When opening a pull request via GitHub it's important to give it a meaningful title (by default github will use the branch name 
+you are merging from). We are also able to add longer message that we should use to outline the changes made and what sort of 
+feedback we're expecting. [GitHub have a good guide on what makes a good pull request](https://github.blog/2015-01-21-how-to-write-the-perfect-pull-request/) for more thoughts. 
+
+![](../fig/github-pr-open.png)
+
+Once we've opened a pull request it's available for everyone to see (on public repos that really is everyone!). 
+When viewing a pull request we can see the description and title along with the pull request number (#1 in this case). 
+We can also see the commits that are included which we can view in more detail using the various tabs 
+(in particular the `Files changed` tab). The `Conversations` tab also shows the exchanges between the pull request 
+suggester and the owner of the repository and others.
+
+![](../fig/github-pr-open02.png)
+
+In this example of suggesting a pull request on a repository we own then we also have the ability to approve the pull request and merge it. You can find this option and confirmation of any checks (i.e. if any conflicts have been detected) by scrolling to the bottom of the `Conversations` tab.
+
+![](../fig/github-pr-open03.png)
+
+When a pull request is merged the state of the pull request changes from `open` to `merged` and is considered `closed`.
+GitHub suggests we delete the merged branch which will delete the branch on GitHub but not locally. 
+It is also possible to close pull requests without merging, which can be the case when changes are 
+rejected or more work has been suggested.
+
+![](../fig/github-pr-closed.png)
+
+
+Now when we navigate back to the root of the repository we can see the commits from our 
+`experimental` branch have been merged and a merge commit has also been created.
+
+
+![](../fig/github-pr-final.png)
+
+
+If we're happy that we don't need the branch anymore and have deleted it on GitHub we can also delete
+ it locally using the command `git branch -d`.
+
+~~~
+$ git branch -d experimental
+~~~
+{: .bash}
+
+~~~
+Deleted branch experimental (was c5d6cba).
+~~~
+{: .output}
+
+We also need to pull down the merged changes from the pull request onto our local `main` branch.
+We can do this just using `git pull` with the `main` branch checked out.
+
+~~~
+$ git checkout main
+$ git pull
+~~~
+{: .bash}
+
+~~~
+Switched to branch 'main'
+remote: Enumerating objects: 6, done.
+remote: Counting objects: 100% (6/6), done.
+remote: Compressing objects: 100% (4/4), done.
+remote: Total 4 (delta 2), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (4/4), done.
+From github.com:Sparrow0hawk/inflammation
+   e8dd8ff..252256f  main                 -> origin/main
+Updating e8dd8ff..252256f
+Fast-forward
+ project.txt | 1 +
+ 1 file changed, 1 insertion(+)
+~~~
+{: .output}
 
 > ## A Typical Work Session
 >
