@@ -27,7 +27,8 @@ Jane sets up her new laptop:
 ~~~
 $ git config --global user.name "Jane Smith"
 $ git config --global user.email "jane.smith@university.ac.uk"
-$ git config --global color.ui "auto"
+$ git config --global color.ui auto
+$ git config --global init.defaultBranch main
 ~~~
 {: .bash}
 
